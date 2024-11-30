@@ -97,7 +97,7 @@ const Catalog = async ({
   const filterParams = { q, category, brand, price, rating, sort, page };
 
   return (
-    <section className="grid grid-cols-1 md:grid-cols-[200px_1fr] xl:grid-cols-[300px_1fr] gap-4">
+    <section className="container grid grid-cols-1 md:grid-cols-[200px_1fr] xl:grid-cols-[300px_1fr] gap-4">
       <Filter
         filterParams={filterParams}
         categories={categories}

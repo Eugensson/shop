@@ -19,7 +19,14 @@ export default {
       lg: "960px",
       xl: "1430px",
     },
+    fontFamily: {
+      primary: "var(--font-inter)",
+      secondary: "var(--font-lora)",
+    },
     extend: {
+      backgroundImage: {
+        footer: "url('/bg-footer.jpg')",
+      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

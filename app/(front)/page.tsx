@@ -5,7 +5,7 @@ export const metadata: Metadata = {
 };
 
 const Home = async () => {
-  return <section>homepage</section>;
+  return <section className="container py-10 h-full">Home</section>;
 };
 
 export default Home;
