@@ -1,5 +1,11 @@
 import { Metadata } from "next";
+import { ThemeProvider } from "next-themes";
 import { Inter, Lora } from "next/font/google";
+import { SessionProvider } from "next-auth/react";
+
+import { Toaster } from "@/components/ui/toaster";
+
+import { auth } from "@/auth";
 
 import "./globals.css";
 
@@ -23,16 +29,28 @@ export const metadata: Metadata = {
   description: "e-Commerce",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const session = await auth();
+
   return (
-    <html lang="en">
-      <body className={`${inter.variable} ${lora.variable} antialiased`}>
-        {children}
-      </body>
-    </html>
+    <SessionProvider session={session}>
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${inter.variable} ${lora.variable} antialiased`}>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem={true}
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster />
+          </ThemeProvider>
+        </body>
+      </html>
+    </SessionProvider>
   );
 }

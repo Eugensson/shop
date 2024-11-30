@@ -13,15 +13,16 @@ export const config = {
         },
         password: { type: "password" },
       },
+
       async authorize(credentials) {
         await dbConnect();
-
-        if (credentials == null) return null;
+        if (!credentials) return null;
 
         const user = await UserModel.findOne({ email: credentials.email });
 
-        if (user && (await user.comparePassword(credentials.password)))
+        if (user && (await user.comparePassword(credentials.password))) {
           return user;
+        }
 
         return null;
       },
@@ -62,4 +63,4 @@ export const config = {
   },
 };
 
-export const { handlers, signIn, signOut, auth } = NextAuth(config);
+export const { handlers, auth, signIn, signOut } = NextAuth(config);

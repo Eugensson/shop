@@ -1,15 +1,17 @@
+import bcrypt from "bcryptjs";
+
 const sampleData = {
   users: [
     {
       name: "User",
       email: "user@user.com",
-      password: "123456",
+      password: await bcrypt.hash("123456", 10),
       isAdmin: false,
     },
     {
       name: "Admin",
       email: "admin@admin.com",
-      password: "123456",
+      password: await bcrypt.hash("123456", 10),
       isAdmin: true,
     },
   ],

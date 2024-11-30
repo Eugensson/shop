@@ -1,14 +1,11 @@
 import NextAuth from "next-auth";
-import { NextRequest } from "next/server";
 import type { NextAuthConfig } from "next-auth";
-import GitHub from "next-auth/providers/github";
-import Google from "next-auth/providers/google";
 
-const authConfig: NextAuthConfig = {
-  providers: [Google, GitHub],
+const authConfig = {
+  providers: [],
   callbacks: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    authorized({ request, auth }: { request: NextRequest; auth: any }) {
+    authorized({ request, auth }: any) {
       const protectedPaths = [
         /\/shipping/,
         /\/payment/,
@@ -22,7 +19,7 @@ const authConfig: NextAuthConfig = {
       return true;
     },
   },
-};
+} satisfies NextAuthConfig;
 
 export const { auth: middleware } = NextAuth(authConfig);
 
