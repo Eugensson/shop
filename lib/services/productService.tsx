@@ -5,6 +5,8 @@ import { PAGE_SIZE } from "@/constants";
 import { dbConnect } from "@/lib/db-connect";
 import { ProductModel, Product } from "@/lib/models/product-model";
 
+type LeanProduct = Omit<Product, "_id" | "__v"> & { _id: string };
+
 export const revalidate = 3600;
 
 export const getMinMaxPrices = cache(async () => {
@@ -32,8 +34,6 @@ export const getMinMaxPrices = cache(async () => {
   }
 });
 
-type LeanProduct = Omit<Product, "_id" | "__v"> & { _id: string };
-
 export const getProductBySlug = cache(
   async (slug: string): Promise<LeanProduct | null> => {
     try {
@@ -50,16 +50,6 @@ export const getProductBySlug = cache(
   }
 );
 
-interface GetByQueryParams {
-  q: string;
-  sort: string;
-  page: string;
-  brand: string;
-  price: string;
-  rating: string;
-  category: string;
-}
-
 export const getByQuery = cache(
   async ({
     q,
@@ -69,7 +59,15 @@ export const getByQuery = cache(
     brand,
     category,
     page = "1",
-  }: GetByQueryParams) => {
+  }: {
+    q: string;
+    sort: string;
+    page: string;
+    brand: string;
+    price: string;
+    rating: string;
+    category: string;
+  }) => {
     await dbConnect();
 
     const queryFilter =
@@ -147,47 +145,20 @@ export const getByQuery = cache(
   }
 );
 
-//
-//
-//
-//
-//
-//
-//
+export const getLatestProducts = cache(async () => {
+  try {
+    await dbConnect();
 
-const getLatest = cache(async () => {
-  await dbConnect();
+    const products = await ProductModel.find({})
+      .sort({ _id: -1 })
+      .limit(4)
+      .lean();
 
-  const products = await ProductModel.find({})
-    .sort({ _id: -1 })
-    .limit(4)
-    .lean();
+    if (!products) throw new Error("Products not found");
 
-  return products as Product[];
+    return products as Product[];
+  } catch (error) {
+    console.error("Error fetching latest products:", error);
+    throw new Error("Unable to fetch latest products");
+  }
 });
-
-const getFeatured = cache(async () => {
-  await dbConnect();
-
-  const products = await ProductModel.find({ isFeatured: true })
-    .limit(3)
-    .lean();
-
-  return products as Product[];
-});
-
-const getBySlug = cache(async (slug: string) => {
-  await dbConnect();
-
-  const product = await ProductModel.findOne({ slug }).lean();
-
-  return product as Product;
-});
-
-const productService = {
-  getLatest,
-  getFeatured,
-  getBySlug,
-};
-
-export default productService;

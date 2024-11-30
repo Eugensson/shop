@@ -1,6 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Minus, Search } from "lucide-react";
 
 import {
   Accordion,
@@ -9,12 +11,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Rating } from "@/components/rating";
+import { Input } from "@/components/ui/input";
+import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
-import { cn } from "@/lib/utils";
+import { cn, debounce } from "@/lib/utils";
 
-import { PRICES, RATINGS } from "@/constants";
+import { RATINGS } from "@/constants";
 
 export const Filter = ({
   filterParams,
@@ -40,14 +44,57 @@ export const Filter = ({
   };
 }) => {
   const router = useRouter();
+  const [query, setQuery] = useState<string>("all");
+  const DEFAULT_CUSTOM_PRICE = [minPriceProps, maxPriceProps];
+  const [minPrice, setMinPrice] = useState<number>(minPriceProps);
+  const [maxPrice, setMaxPrice] = useState<number>(maxPriceProps);
+  const [range, setRange] = useState<number[]>(DEFAULT_CUSTOM_PRICE);
+
+  useEffect(() => {
+    const debouncedSearch = debounce(() => {
+      if (query.trim() !== filterParams.q) {
+        handleFilterClick({ q: query });
+      }
+    }, 500);
+
+    debouncedSearch();
+
+    return () => {
+      debouncedSearch.cancel();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
+
+  useEffect(() => {
+    const debouncedUpdateFilters = debounce(() => {
+      if (
+        range[0] === DEFAULT_CUSTOM_PRICE[0] &&
+        range[1] === DEFAULT_CUSTOM_PRICE[1]
+      ) {
+        handleFilterClick({ p: "all" });
+      } else {
+        const priceRange = `${range[0]}-${range[1]}`;
+        handleFilterClick({ p: priceRange });
+      }
+    }, 500);
+
+    debouncedUpdateFilters();
+
+    return () => {
+      debouncedUpdateFilters.cancel();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [range]);
 
   const getFilterUrl = ({
+    q,
     c,
     b,
     p,
     r,
     pg,
   }: {
+    q?: string;
     c?: string;
     b?: string;
     p?: string;
@@ -55,6 +102,7 @@ export const Filter = ({
     pg?: string;
   }) => {
     const params = { ...filterParams };
+    if (q) params.q = query.trim();
     if (c) params.category = c;
     if (b) params.brand = b;
     if (p) params.price = p;
@@ -64,6 +112,7 @@ export const Filter = ({
   };
 
   const handleFilterClick = (params: {
+    q?: string;
     c?: string;
     b?: string;
     p?: string;
@@ -73,14 +122,30 @@ export const Filter = ({
     router.push(getFilterUrl(params));
   };
 
-  console.log("categories", categories);
+  const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMinPrice(Number(e.target.value));
+    setRange([Number(e.target.value), maxPrice]);
+  };
 
-  console.log("minPriceProps", minPriceProps);
-  console.log("maxPriceProps", maxPriceProps);
+  const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMaxPrice(Number(e.target.value));
+    setRange([minPrice, Number(e.target.value)]);
+  };
 
   return (
     <aside className={cn("h-fit sticky top-24", className)}>
-      <div className="relative h-12">Serch...</div>
+      <div className="relative h-12">
+        <Input
+          className="w-full h-full pl-10"
+          placeholder="Search products..."
+          name="q"
+          value={query === "all" ? "" : query}
+          onChange={(e) => {
+            setQuery(e.target.value);
+          }}
+        />
+        <Search className="absolute top-1/2 -translate-y-1/2 left-2 text-muted-foreground hover:text-primary" />
+      </div>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="categories">
           <AccordionTrigger>Categories</AccordionTrigger>
@@ -144,28 +209,35 @@ export const Filter = ({
           <AccordionTrigger>Price</AccordionTrigger>
           <AccordionContent>
             <ScrollArea className="h-[120px] rounded-none p-1">
-              <ul className="space-y-2">
-                <li>
-                  <Button
-                    onClick={() => handleFilterClick({ p: "all" })}
-                    variant="link"
-                    className="p-0 h-fit text-muted-foreground hover:text-primary"
-                  >
-                    Any
-                  </Button>
-                </li>
-                {PRICES.map((p) => (
-                  <li key={p.value}>
-                    <Button
-                      onClick={() => handleFilterClick({ p: p.value })}
-                      variant="link"
-                      className="p-0 h-fit text-muted-foreground hover:text-primary"
-                    >
-                      {p.name}
-                    </Button>
-                  </li>
-                ))}
-              </ul>
+              <div className="flex items-center gap-4">
+                <Input
+                  type="number"
+                  value={range[0]}
+                  disabled={minPrice === DEFAULT_CUSTOM_PRICE[0]}
+                  onChange={handleMinPriceChange}
+                  className="rounded-none"
+                />
+                <Minus />
+                <Input
+                  type="number"
+                  value={range[1]}
+                  disabled={maxPrice === DEFAULT_CUSTOM_PRICE[1]}
+                  onChange={handleMaxPriceChange}
+                  className="rounded-none"
+                />
+              </div>
+              <Slider
+                className="mt-10"
+                min={DEFAULT_CUSTOM_PRICE[0]}
+                max={DEFAULT_CUSTOM_PRICE[1]}
+                defaultValue={DEFAULT_CUSTOM_PRICE}
+                step={10}
+                onValueChange={(newRange) => {
+                  setRange(newRange);
+                  setMinPrice(newRange[0]);
+                  setMaxPrice(newRange[1]);
+                }}
+              />
             </ScrollArea>
           </AccordionContent>
         </AccordionItem>
