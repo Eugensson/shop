@@ -5,7 +5,7 @@ import { PAGE_SIZE } from "@/constants";
 import { dbConnect } from "@/lib/db-connect";
 import { ProductModel, Product } from "@/lib/models/product-model";
 
-type LeanProduct = Omit<Product, "_id" | "__v"> & { _id: string };
+export type LeanProduct = Omit<Product, "_id" | "__v"> & { _id: string };
 
 export const revalidate = 3600;
 

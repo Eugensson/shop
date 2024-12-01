@@ -3,10 +3,14 @@ import { twMerge } from "tailwind-merge";
 import { clsx, type ClassValue } from "clsx";
 
 import { Order } from "@/lib/models/order-model";
+import { LeanProduct } from "./services/productService";
 
 export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
 };
+
+export const round2 = (num: number) =>
+  Math.round((num + Number.EPSILON) * 100) / 100;
 
 export const serializeOrder = (order: Document & Order) => {
   return {
@@ -43,28 +47,21 @@ export const convertDocToObj = (doc: any) => {
   return doc;
 };
 
+export const convertProdToItem = (product: LeanProduct) => {
+  return {
+    id: product._id.toString(),
+    name: product.name,
+    slug: product.slug,
+    sku: product.sku,
+    price: product.price,
+    discount: product.discount ?? 0,
+    brand: product.brand,
+    image: product.thumbnail,
+    countInStock: product.countInStock,
+    quantity: 1,
+  };
+};
+
 export const formatList = (items: string[]): string => {
   return items.join(", ");
 };
-
-// export const getFilterUrl = ({
-//   c,
-//   s,
-//   p,
-//   r,
-//   pg,
-// }: {
-//   c?: string;
-//   s?: string;
-//   p?: string;
-//   r?: string;
-//   pg?: string;
-// }) => {
-//   const params = { q, category, price, rating, sort, page };
-//   if (c) params.category = c;
-//   if (p) params.price = p;
-//   if (r) params.rating = r;
-//   if (pg) params.page = pg;
-//   if (s) params.sort = s;
-//   return `/search?${new URLSearchParams(params).toString()}`;
-// };

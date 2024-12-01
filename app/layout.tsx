@@ -1,11 +1,9 @@
 import { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter, Lora } from "next/font/google";
-import { SessionProvider } from "next-auth/react";
 
+import { Provider } from "@/components/provider";
 import { Toaster } from "@/components/ui/toaster";
-
-import { auth } from "@/auth";
 
 import "./globals.css";
 
@@ -34,23 +32,19 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth();
-
   return (
-    <SessionProvider session={session}>
-      <html lang="en" suppressHydrationWarning>
-        <body className={`${inter.variable} ${lora.variable} antialiased`}>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem={true}
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster />
-          </ThemeProvider>
-        </body>
-      </html>
-    </SessionProvider>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${inter.variable} ${lora.variable} antialiased`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem={true}
+          disableTransitionOnChange
+        >
+          <Provider>{children}</Provider>
+          <Toaster />
+        </ThemeProvider>
+      </body>
+    </html>
   );
 }

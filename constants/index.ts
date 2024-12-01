@@ -1,9 +1,10 @@
 import {
   Calendar,
   ChartNoAxesCombined,
-  Home,
   Inbox,
+  Rss,
   Settings,
+  Undo2,
   Users,
 } from "lucide-react";
 import {
@@ -22,6 +23,16 @@ import { MdBiotech, MdOutlineContactPhone } from "react-icons/md";
 export const PAGE_SIZE = 12;
 
 export const RATINGS = [5, 4, 3, 2, 1];
+
+export const ADMIN_LINKS = [
+  { title: "Back to Website", url: "/", icon: Undo2 },
+  { title: "Overview", url: "/overview", icon: ChartNoAxesCombined },
+  { title: "Products", url: "/products", icon: Inbox },
+  { title: "Orders", url: "/orders", icon: Calendar },
+  { title: "Users", url: "/users", icon: Users },
+  { title: "Blog", url: "/blog", icon: Rss },
+  { title: "Settings", url: "/settings", icon: Settings },
+];
 
 export const NAV_LINKS = [
   { label: "Home", src: "/", icon: IoHomeOutline },

@@ -64,11 +64,16 @@ export type Order = {
 };
 
 export type OrderItem = {
+  id: string;
   name: string;
   slug: string;
-  quantity: number;
-  image: string;
+  sku: string;
   price: number;
+  discount: number;
+  brand: string;
+  quantity: number;
+  countInStock: number;
+  image: string;
 };
 
 export type ShippingAddress = {

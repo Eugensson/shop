@@ -1,21 +1,17 @@
 import NextAuth from "next-auth";
 import type { NextAuthConfig } from "next-auth";
 
+import { protectedRoutes } from "@/routes";
+
 const authConfig = {
   providers: [],
   callbacks: {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     authorized({ request, auth }: any) {
-      const protectedPaths = [
-        /\/shipping/,
-        /\/payment/,
-        /\/place-order/,
-        /\/profile/,
-        /\/order\/(.*)/,
-        /\/admin/,
-      ];
       const { pathname } = request.nextUrl;
-      if (protectedPaths.some((p) => p.test(pathname))) return !!auth;
+
+      if (protectedRoutes.some((p) => p.test(pathname))) return !!auth;
+
       return true;
     },
   },
