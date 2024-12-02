@@ -1,9 +1,10 @@
 import { Document } from "mongoose";
 import { twMerge } from "tailwind-merge";
+import { NextResponse } from "next/server";
 import { clsx, type ClassValue } from "clsx";
 
 import { Order } from "@/lib/models/order-model";
-import { LeanProduct } from "./services/productService";
+import { LeanProduct } from "@/lib/services/productService";
 
 export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));
@@ -64,4 +65,37 @@ export const convertProdToItem = (product: LeanProduct) => {
 
 export const formatList = (items: string[]): string => {
   return items.join(", ");
+};
+
+export const formatId = (x: string) => {
+  return `..${x.substring(14, 24)}`;
+};
+
+type AuthRequest = { auth?: { user?: { isAdmin: boolean } } };
+
+export const checkAdminAuth = (req: AuthRequest): NextResponse | null => {
+  if (!req.auth || !req.auth.user?.isAdmin) {
+    return NextResponse.json({ message: "Unauthorized" }, { status: 401 });
+  }
+  return null;
+};
+
+export const fetcher = async (url: string) => {
+  const res = await fetch(url);
+  if (!res.ok) {
+    throw new Error(`Error fetching data: ${res.statusText}`);
+  }
+  return res.json();
+};
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const handleError = (error: any, defaultMessage: string) => {
+  console.error(defaultMessage, error);
+  return new Response(
+    JSON.stringify({
+      message: defaultMessage,
+      error: error?.message || "Unknown error",
+    }),
+    { status: error.status || 500 }
+  );
 };

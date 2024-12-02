@@ -45,30 +45,30 @@ export const SerchResults = ({
         ) : null}
       </div>
       {q.trim() && q !== "all" && (
-        <Badge variant="outline" className="w-fit">
+        <Badge variant="outline" className="w-fit capitalize">
           <span className="text-muted-foreground mr-1">search:</span>
           {q}
         </Badge>
       )}
       {category && category !== "all" && (
-        <Badge variant="outline" className="w-fit">
+        <Badge variant="outline" className="w-fit capitalize">
           <span className="text-muted-foreground mr-1">category:</span>
           {category}
         </Badge>
       )}
       {brand && brand !== "all" && (
-        <Badge variant="outline" className="w-fit">
+        <Badge variant="outline" className="w-fit capitalize">
           <span className="text-muted-foreground mr-1">brand:</span>
           {brand}
         </Badge>
       )}
       {price && price !== "all" && (
-        <Badge variant="outline" className="w-fit">
+        <Badge variant="outline" className="w-fit capitalize">
           <span className="text-muted-foreground mr-1">price:</span>${price}
         </Badge>
       )}
       {rating && rating !== "all" && (
-        <Badge variant="outline" className="w-fit">
+        <Badge variant="outline" className="w-fit capitalize">
           <span className="text-muted-foreground mr-1">rating:</span>
           {rating} {Number(rating) === 1 ? "star" : "stars"}
         </Badge>

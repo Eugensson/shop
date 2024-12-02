@@ -17,7 +17,7 @@ const productSchema = new Schema(
     sku: { type: String, required: true, unique: true },
     category: { type: String, required: true },
     price: { type: Number, required: true },
-    discount: { type: Number, required: true, default: null },
+    discount: { type: Number, default: null },
     brand: { type: String, required: true },
     rating: { type: Number, required: true, default: 0 },
     numReviews: { type: Number, required: true, default: 0 },
@@ -89,7 +89,7 @@ export type Product = {
   thumbnail: string;
   banner?: string;
   price: number;
-  discount: number | null;
+  discount?: number | null;
   brand: string;
   category: string;
   rating: number;

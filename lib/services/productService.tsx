@@ -9,6 +9,28 @@ export type LeanProduct = Omit<Product, "_id" | "__v"> & { _id: string };
 
 export const revalidate = 3600;
 
+export const getUniqueBrands = cache(async (): Promise<string[]> => {
+  try {
+    await dbConnect();
+    const brands = await ProductModel.distinct("brand");
+    return brands.sort((a, b) => a.localeCompare(b));
+  } catch (error) {
+    console.error("Error fetching unique brands:", error);
+    throw new Error("Unable to fetch brands");
+  }
+});
+
+export const getUniqueCategories = cache(async (): Promise<string[]> => {
+  try {
+    await dbConnect();
+    const categories = await ProductModel.distinct("category");
+    return categories.sort((a, b) => a.localeCompare(b));
+  } catch (error) {
+    console.error("Error fetching unique categories:", error);
+    throw new Error("Unable to fetch categories");
+  }
+});
+
 export const getMinMaxPrices = cache(async () => {
   try {
     await dbConnect();
@@ -124,7 +146,10 @@ export const getByQuery = cache(
       .lean();
 
     const brands = await ProductModel.distinct("brand");
+    const sortBrands = brands.sort((a, b) => a.localeCompare(b));
+
     const categories = await ProductModel.distinct("category");
+    const sortCat = categories.sort((a, b) => a.localeCompare(b));
 
     const countProducts = await ProductModel.countDocuments({
       ...brandFilter,
@@ -136,8 +161,8 @@ export const getByQuery = cache(
 
     return {
       page,
-      brands,
-      categories,
+      brands: sortBrands,
+      categories: sortCat,
       countProducts,
       products,
       pages: Math.ceil(countProducts / PAGE_SIZE),

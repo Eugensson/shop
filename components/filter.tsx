@@ -1,8 +1,8 @@
 "use client";
 
+import { Minus } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import { Minus, Search } from "lucide-react";
 
 import {
   Accordion,
@@ -14,6 +14,7 @@ import { Rating } from "@/components/rating";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
+import { SearchBox } from "@/components/search-box";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 import { cn, debounce } from "@/lib/utils";
@@ -44,26 +45,10 @@ export const Filter = ({
   };
 }) => {
   const router = useRouter();
-  const [query, setQuery] = useState<string>("all");
   const DEFAULT_CUSTOM_PRICE = [minPriceProps, maxPriceProps];
   const [minPrice, setMinPrice] = useState<number>(minPriceProps);
   const [maxPrice, setMaxPrice] = useState<number>(maxPriceProps);
   const [range, setRange] = useState<number[]>(DEFAULT_CUSTOM_PRICE);
-
-  useEffect(() => {
-    const debouncedSearch = debounce(() => {
-      if (query.trim() !== filterParams.q) {
-        handleFilterClick({ q: query });
-      }
-    }, 500);
-
-    debouncedSearch();
-
-    return () => {
-      debouncedSearch.cancel();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [query]);
 
   useEffect(() => {
     const debouncedUpdateFilters = debounce(() => {
@@ -102,7 +87,7 @@ export const Filter = ({
     pg?: string;
   }) => {
     const params = { ...filterParams };
-    if (q) params.q = query.trim();
+    if (q) params.q = q;
     if (c) params.category = c;
     if (b) params.brand = b;
     if (p) params.price = p;
@@ -134,18 +119,7 @@ export const Filter = ({
 
   return (
     <aside className={cn("h-fit sticky top-24", className)}>
-      <div className="relative h-12">
-        <Input
-          className="w-full h-full pl-10"
-          placeholder="Search products..."
-          name="q"
-          value={query === "all" ? "" : query}
-          onChange={(e) => {
-            setQuery(e.target.value);
-          }}
-        />
-        <Search className="absolute top-1/2 -translate-y-1/2 left-2 text-muted-foreground hover:text-primary" />
-      </div>
+      <SearchBox />
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="categories">
           <AccordionTrigger>Categories</AccordionTrigger>

@@ -40,7 +40,7 @@ export const SortFilter = ({
     <Label className="flex items-center gap-2" htmlFor="sort">
       Sort by:
       <Select onValueChange={handleSortChange} defaultValue={filterParams.sort}>
-        <SelectTrigger className="w-full md:w-[160px]">
+        <SelectTrigger className="w-full md:w-[180px]">
           <SelectValue placeholder="Sort by:" />
         </SelectTrigger>
         <SelectContent>

@@ -106,8 +106,8 @@ const Catalog = async ({
         minPriceProps={minPrice}
         maxPriceProps={maxPrice}
       />
-      <div className="space-y-4 px-2">
-        <div className="sticky top-20 z-40 flex justify-between items-center gap-1 h-fit min-h-20 bg-background py-4 border-b">
+      <div className="px-2">
+        <div className="sticky top-[88px] z-40 flex justify-between items-center gap-1 h-fit min-h-20 bg-background py-4 border-b">
           <SerchResults
             getFilterUrl={getFilterUrl}
             q={q}
@@ -119,9 +119,8 @@ const Catalog = async ({
           />
           <SortFilter filterParams={filterParams} />
         </div>
-
         <ProductList
-          className="w-full pt-20"
+          className="w-full"
           products={products.map(convertDocToObj)}
         />
         <PaginationBar totalPages={pages} filterParams={filterParams} />
