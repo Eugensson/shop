@@ -33,10 +33,10 @@ import {
 } from "@/components/ui/table";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 import { useToast } from "@/hooks/use-toast";
 import { useCartService } from "@/hooks/use-cart-store";
-import { ScrollArea } from "../ui/scroll-area";
 
 export const PlaceOrderForm = () => {
   const {
@@ -55,7 +55,7 @@ export const PlaceOrderForm = () => {
   const { toast } = useToast();
 
   const { trigger: placeOrder, isMutating: isPlacing } = useSWRMutation(
-    `/api/orders/mine`,
+    `/api/orders`,
     async () => {
       const res = await fetch("/api/orders", {
         method: "POST",
