@@ -88,6 +88,22 @@ export const fetcher = async (url: string) => {
   return res.json();
 };
 
+const CURRENCY_FORMATTER = new Intl.NumberFormat("en-US", {
+  currency: "USD",
+  style: "currency",
+  minimumFractionDigits: 2,
+});
+
+export const formatCurrency = (amount: number | string | null) => {
+  if (typeof amount === "number") {
+    return CURRENCY_FORMATTER.format(amount);
+  } else if (typeof amount === "string") {
+    return CURRENCY_FORMATTER.format(Number(amount));
+  } else {
+    return "NaN";
+  }
+};
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const handleError = (error: any, defaultMessage: string) => {
   console.error(defaultMessage, error);
