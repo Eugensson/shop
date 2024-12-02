@@ -14,9 +14,7 @@ import {
   getSortedRowModel,
 } from "@tanstack/react-table";
 import { useMemo, useState } from "react";
-import useSWRMutation from "swr/mutation";
-import { useRouter } from "next/navigation";
-import { CirclePlus, EyeOff, Loader, Search } from "lucide-react";
+import { EyeOff, Search } from "lucide-react";
 
 import {
   Table,
@@ -36,9 +34,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
 import { fetcher } from "@/lib/utils";
-import { Product } from "@/lib/models/product-model";
-
-import { useToast } from "@/hooks/use-toast";
+import { User } from "@/lib/models/user-model";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -47,61 +43,20 @@ interface DataTableProps<TData, TValue> {
 export function DataTable<TData, TValue>({
   columns,
 }: DataTableProps<TData, TValue>) {
-  const router = useRouter();
-  const { toast } = useToast();
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
-  const { data: rawData, error } = useSWR(`/api/admin/products`, fetcher);
-
-  const { trigger: createProduct, isMutating: isCreating } = useSWRMutation(
-    `/api/admin/products`,
-    async (url) => {
-      const res = await fetch(url, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-      const data = await res.json();
-
-      if (!res.ok) {
-        toast({
-          title: data.message,
-          variant: "destructive",
-        });
-        return;
-      }
-
-      toast({
-        title: "Product created successfully",
-      });
-
-      if (!data.product || !data.product._id) {
-        toast({
-          title: "Failed to create product",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      router.push(`/products/${data.product._id}`);
-    }
-  );
+  const { data: rawData, error } = useSWR(`/api/admin/users`, fetcher);
 
   const data = useMemo(() => {
     return (
-      rawData?.map((product: Product) => ({
-        id: product._id,
-        sku: product.sku,
-        image: product.images[0],
-        name: product.name,
-        price: product.price,
-        countInStock: product.countInStock,
-        category: product.category,
-        rating: product.rating,
-        action: "Edit product",
+      rawData?.map((user: User) => ({
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        isAdmin: user.isAdmin,
+        action: "Edit user",
       })) || []
     );
   }, [rawData]);
@@ -109,6 +64,7 @@ export function DataTable<TData, TValue>({
   const table = useReactTable({
     data,
     columns,
+
     onSortingChange: setSorting,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -119,58 +75,27 @@ export function DataTable<TData, TValue>({
     state: { sorting, columnFilters, columnVisibility },
   });
 
-  if (error) return <p>{error.message}</p>;
+  if (error) return <p>An error has occurred.</p>;
 
   return (
     <div className="w-full flex flex-col justify-between">
       <div className="space-y-4">
         <div className="flex items-center justify-between">
-          <div className="flex items-center gap-8">
-            <Button
-              type="button"
-              disabled={isCreating}
-              onClick={() => createProduct()}
-              className="flex items-center gap-4"
-            >
-              {isCreating ? (
-                <Loader className="animate-spin" />
-              ) : (
-                <CirclePlus />
-              )}
-              Create product
-            </Button>
-            <div className="relative w-full max-w-md">
-              <Input
-                placeholder="Search product by sku..."
-                value={
-                  (table.getColumn("sku")?.getFilterValue() as string) ?? ""
-                }
-                onChange={(event) =>
-                  table.getColumn("sku")?.setFilterValue(event.target.value)
-                }
-                className="pl-10"
-              />
-              <Search
-                size={20}
-                className="absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground"
-              />
-            </div>
-            <div className="relative w-full max-w-md">
-              <Input
-                placeholder="Search product by name..."
-                value={
-                  (table.getColumn("name")?.getFilterValue() as string) ?? ""
-                }
-                onChange={(event) =>
-                  table.getColumn("name")?.setFilterValue(event.target.value)
-                }
-                className="pl-10"
-              />
-              <Search
-                size={20}
-                className="absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground"
-              />
-            </div>
+          <div className="relative w-full max-w-md">
+            <Input
+              placeholder="Serch by name..."
+              value={
+                (table.getColumn("name")?.getFilterValue() as string) ?? ""
+              }
+              onChange={(event) =>
+                table.getColumn("name")?.setFilterValue(event.target.value)
+              }
+              className="pl-10"
+            />
+            <Search
+              size={20}
+              className="absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground"
+            />
           </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>

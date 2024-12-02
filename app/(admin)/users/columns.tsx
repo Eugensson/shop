@@ -2,14 +2,13 @@
 
 import {
   ArrowUp01,
-  ArrowUp10,
   ArrowUpAZ,
+  ArrowUpNarrowWide,
   MoreVertical,
   PencilIcon,
   TrashIcon,
 } from "lucide-react";
 import Link from "next/link";
-import Image from "next/image";
 import useSWRMutation from "swr/mutation";
 import { useRouter } from "next/navigation";
 import { ColumnDef } from "@tanstack/react-table";
@@ -24,46 +23,53 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 
+import { formatId } from "@/lib/utils";
+
 import { useToast } from "@/hooks/use-toast";
 
 export type ProductRow = {
-  image: string;
-  sku: string;
   id: string;
   name: string;
-  price: number;
-  countInStock: number;
-  category: string;
-  rating: number;
+  email: string;
+  isAdmin: boolean;
 };
 
-const ProductActions = ({ productId }: { productId: string }) => {
+const UserActions = ({ userId }: { userId: string }) => {
   const router = useRouter();
   const { toast } = useToast();
 
-  const { trigger: deleteProduct } = useSWRMutation(
-    `/api/admin/products`,
-    async (url, { arg }: { arg: { productId: string } }) => {
+  const { trigger: deleteUser } = useSWRMutation(
+    `/api/admin/users`,
+    async (url, { arg }: { arg: { userId: string } }) => {
+      const toastId = toast({
+        title: "Deleting user...",
+      });
+
       try {
-        const res = await fetch(`${url}/${arg.productId}`, {
+        const res = await fetch(`${url}/${arg.userId}`, {
           method: "DELETE",
-          headers: { "Content-Type": "application/json" },
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
         const data = await res.json();
         if (res.ok) {
           toast({
-            title: "Product deleted successfully",
+            title: "User deleted successfully",
+            description: `${toastId}`,
           });
           router.refresh();
         } else {
           toast({
-            title: data.message,
+            title: `${toastId}`,
+            description: data.message,
             variant: "destructive",
           });
         }
       } catch {
         toast({
-          title: "Something went wrong",
+          title: "Error",
+          description: "Something went wrong",
           variant: "destructive",
         });
       }
@@ -83,12 +89,9 @@ const ProductActions = ({ productId }: { productId: string }) => {
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <Button variant="link" size="sm" asChild>
-            <Link
-              href={`/products/${productId}`}
-              className="flex items-center gap-2"
-            >
+            <Link href={`/users/${userId}`} className="flex items-center gap-2">
               <PencilIcon className="size-4 text-emerald-500" />
-              Edit product
+              Edit User
             </Link>
           </Button>
         </DropdownMenuItem>
@@ -98,10 +101,10 @@ const ProductActions = ({ productId }: { productId: string }) => {
             aria-label="Кнопка видалення продукту"
             size="sm"
             className="flex items-center gap-2"
-            onClick={() => deleteProduct({ productId })}
+            onClick={() => deleteUser({ userId })}
           >
             <TrashIcon className="size-4 text-red-500" />
-            Delete product
+            Delete User
           </Button>
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -111,41 +114,22 @@ const ProductActions = ({ productId }: { productId: string }) => {
 
 export const columns: ColumnDef<ProductRow>[] = [
   {
-    accessorKey: "image",
-    header: () => <div>Image</div>,
-    cell: ({ row }) => {
-      const imageUrl =
-        (row.getValue("image") as string) ?? "/images/placeholder.png";
-      return (
-        <div className="flex justify-center items-center">
-          <Image
-            src={imageUrl}
-            alt={`Image of ${row.original.name}`}
-            width={50}
-            height={50}
-            className="aspect-square object-cover"
-          />
-        </div>
-      );
-    },
-  },
-  {
-    accessorKey: "sku",
+    accessorKey: "id",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Product Sku
+          User Id
           <ArrowUp01 className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => {
-      const sku = row.getValue("sku") as string;
+      const id = row.getValue("id") as string;
 
-      return <p className="ml-4">{sku}</p>;
+      return <p className="ml-4">{formatId(id)}</p>;
     },
   },
   {
@@ -168,84 +152,45 @@ export const columns: ColumnDef<ProductRow>[] = [
     },
   },
   {
-    accessorKey: "price",
+    accessorKey: "email",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Price
-          <ArrowUp01 className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const price = parseFloat(row.getValue("price"));
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(price);
-
-      return <p className="ml-4">{formatted}</p>;
-    },
-  },
-  {
-    accessorKey: "countInStock",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Count In Stock
-          <ArrowUp01 className="ml-2 h-4 w-4" />
-        </Button>
-      );
-    },
-    cell: ({ row }) => {
-      const countInStock = row.getValue("countInStock") as number;
-      return <p className="ml-4">{countInStock}</p>;
-    },
-  },
-  {
-    accessorKey: "category",
-    header: ({ column }) => {
-      return (
-        <Button
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Category
+          Email
           <ArrowUpAZ className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => {
-      const category = row.getValue("category") as number;
-      return <p className="ml-4">{category}</p>;
+      const email = row.getValue("email") as string;
+
+      return <p className="col-span-2 ml-4 truncate">{email}</p>;
     },
   },
   {
-    accessorKey: "rating",
+    accessorKey: "isAdmin",
     header: ({ column }) => {
       return (
         <Button
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Rating
-          <ArrowUp10 className="ml-2 h-4 w-4" />
+          User Role
+          <ArrowUpNarrowWide className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => {
-      const rating = row.getValue("rating") as number;
-      return <p className="ml-4">{rating.toFixed(0)}</p>;
+      const isAdmin = row.getValue("isAdmin") as string;
+
+      return <p className="col-span-2 ml-4">{isAdmin ? "Admin" : "User"}</p>;
     },
   },
   {
     id: "actions",
-    cell: ({ row }) => <ProductActions productId={row.original.id} />,
+    cell: ({ row }) => <UserActions userId={row.original.id} />,
   },
 ];
