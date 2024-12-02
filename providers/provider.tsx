@@ -1,6 +1,6 @@
 import { SessionProvider } from "next-auth/react";
 
-import { ClientProviders } from "@/components/client-providers";
+import { ClientProviders } from "@/providers/client-providers";
 
 import { auth } from "@/auth";
 

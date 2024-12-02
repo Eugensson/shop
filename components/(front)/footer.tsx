@@ -1,5 +1,5 @@
-import { Nav } from "@/components/nav";
-import { Social } from "@/components/social";
+import { Nav } from "@/components/(front)/nav";
+import { Social } from "@/components/(front)/social";
 
 export const Footer = () => {
   return (
@@ -13,6 +13,7 @@ export const Footer = () => {
           </p>
         </div>
       </div>
+      ss
     </footer>
   );
 };

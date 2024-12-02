@@ -1,18 +1,18 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-import { Rating } from "@/components/rating";
+import { Rating } from "@/components/(front)/rating";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
-import { ProductPrice } from "@/components/product-price";
-import { AddToCartBtn } from "@/components/add-to-cart-btn";
-import { ProductImages } from "@/components/product-images";
+import { ProductPrice } from "@/components/(front)/product-price";
+import { AddToCartBtn } from "@/components/(front)/add-to-cart-btn";
+import { ProductImages } from "@/components/(front)/product-images";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 import { convertProdToItem } from "@/lib/utils";
 import { getProductBySlug } from "@/lib/services/productService";
-import { AdditionalInfo } from "@/components/additional-info";
+import { AdditionalInfo } from "@/components/(front)/additional-info";
 
 export async function generateMetadata({
   params,

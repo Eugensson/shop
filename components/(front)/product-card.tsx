@@ -9,9 +9,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Rating } from "@/components/rating";
+import { Rating } from "@/components/(front)/rating";
 import { Badge } from "@/components/ui/badge";
-import { ProductPrice } from "@/components/product-price";
+import { ProductPrice } from "@/components/(front)/product-price";
 
 import { Product } from "@/lib/models/product-model";
 

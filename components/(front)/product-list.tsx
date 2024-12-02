@@ -1,4 +1,4 @@
-import { ProductCard } from "@/components/product-card";
+import { ProductCard } from "@/components/(front)/product-card";
 
 import { cn } from "@/lib/utils";
 import { convertDocToObj } from "@/lib/utils";

@@ -1,6 +1,6 @@
-import { Nav } from "@/components/nav";
-import { Logo } from "@/components/logo";
-import { Cart } from "@/components/cart";
+import { Nav } from "@/components/(front)/nav";
+import { Logo } from "@/components/(front)/logo";
+import { Cart } from "@/components/(front)/cart";
 import { UserButton } from "@/components/user-button";
 
 export const Header = () => {

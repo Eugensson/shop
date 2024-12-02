@@ -10,11 +10,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Rating } from "@/components/rating";
+import { Rating } from "@/components/(front)/rating";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { Button } from "@/components/ui/button";
-import { SearchBox } from "@/components/search-box";
+import { SearchBox } from "@/components/(front)/search-box";
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 import { cn, debounce } from "@/lib/utils";

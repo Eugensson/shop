@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import { ThemeProvider } from "next-themes";
 import { Inter, Lora } from "next/font/google";
 
-import { Provider } from "@/components/provider";
+import { Provider } from "@/providers/provider";
 import { Toaster } from "@/components/ui/toaster";
 
 import "./globals.css";

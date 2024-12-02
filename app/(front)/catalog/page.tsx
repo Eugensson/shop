@@ -1,8 +1,8 @@
-import { Filter } from "@/components/filter";
-import { SortFilter } from "@/components/sort-filter";
-import { ProductList } from "@/components/product-list";
-import { SerchResults } from "@/components/search-result";
-import { PaginationBar } from "@/components/pagination-bar";
+import { Filter } from "@/components/(front)/filter";
+import { SortFilter } from "@/components/(front)/sort-filter";
+import { ProductList } from "@/components/(front)/product-list";
+import { SerchResults } from "@/components/(front)/search-result";
+import { PaginationBar } from "@/components/(front)/pagination-bar";
 
 import { convertDocToObj } from "@/lib/utils";
 import { getByQuery, getMinMaxPrices } from "@/lib/services/productService";
