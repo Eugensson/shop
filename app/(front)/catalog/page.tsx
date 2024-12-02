@@ -106,7 +106,7 @@ const Catalog = async ({
         minPriceProps={minPrice}
         maxPriceProps={maxPrice}
       />
-      <div className="px-2">
+      <div className="px-2 pb-5">
         <div className="sticky top-[88px] z-40 flex justify-between items-center gap-1 h-fit min-h-20 bg-background py-4 border-b">
           <SerchResults
             getFilterUrl={getFilterUrl}

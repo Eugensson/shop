@@ -33,12 +33,18 @@ export const ProductCard = ({ product }: { product: Product }) => {
           </Link>
           {Number(product.discount) > 0 && (
             <Badge
-              className="absolute top-4 right-4 px-4 py-1.5 rounded"
-              variant="destructive"
+              className="absolute top-0 right-0 py-1 px-2 rounded-none text-base text-destructive"
+              variant="outline"
             >
-              - {product.discount} %
+              - {product.discount?.toFixed()} %
             </Badge>
           )}
+          <Badge
+            className="absolute top-0 left-0 p-1 text-sm opacity-80 rounded-none uppercase"
+            variant="secondary"
+          >
+            sku: {product.sku}
+          </Badge>
         </figure>
       </CardContent>
       <CardHeader>

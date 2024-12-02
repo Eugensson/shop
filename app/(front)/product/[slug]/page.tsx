@@ -1,13 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ShieldAlert, Truck, History } from "lucide-react";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { Rating } from "@/components/rating";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -19,6 +12,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 import { convertProdToItem } from "@/lib/utils";
 import { getProductBySlug } from "@/lib/services/productService";
+import { AdditionalInfo } from "@/components/additional-info";
 
 export async function generateMetadata({
   params,
@@ -106,35 +100,9 @@ const ProductDetails = async ({
               className="w-fit font-semibold text-2xl rounded-lg bg-green-500/10 px-4 py-2 text-green-700"
             />
           </li>
-          <li>
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="additionalInformation">
-                <AccordionTrigger className="text-muted-foreground">
-                  Additional Info
-                </AccordionTrigger>
-                <AccordionContent className="flex justify-between items-center">
-                  <p className="flex items-center gap-x-1">
-                    <ShieldAlert size={20} className="text-muted-foreground" />
-                    Warranty
-                  </p>
-                  warrantyInformation
-                </AccordionContent>
-                <AccordionContent className="flex justify-between items-center">
-                  <p className="flex items-center gap-x-1">
-                    <Truck size={20} className="text-muted-foreground" />
-                    Shipping
-                  </p>
-                  shippingInformation
-                </AccordionContent>
-                <AccordionContent className="flex justify-between items-center">
-                  <p className="flex items-center gap-x-1">
-                    <History size={20} className="text-muted-foreground" />
-                    Return Policy
-                  </p>
-                  returnPolicy
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+          <li className="space-y-2">
+            <p className="text-muted-foreground min-w-60">Additional Info:</p>
+            <AdditionalInfo />
           </li>
         </ul>
 

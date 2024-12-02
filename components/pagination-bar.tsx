@@ -39,7 +39,7 @@ export const PaginationBar = ({ filterParams, totalPages }: PaginProps) => {
   if (totalPages <= 1) return null;
 
   return (
-    <Pagination className="py-5">
+    <Pagination className="pt-5">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
