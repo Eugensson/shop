@@ -1,11 +1,14 @@
-import { Metadata } from "next";
-import { auth } from "@/auth";
-import { getFavoriteProductsByUserId } from "@/lib/services/product-service";
-import { ProductList } from "@/components/(front)/product-list";
-import { convertDocToObj } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { Metadata } from "next";
 import { ClipboardList } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
+import { ProductList } from "@/components/(front)/product-list";
+
+import { auth } from "@/auth";
+
+import { convertDocToObj } from "@/lib/utils";
+import { getFavoriteProductsByUserId } from "@/lib/services/product-service";
 
 export const metadata: Metadata = {
   title: "Wishlist",

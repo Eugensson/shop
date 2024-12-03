@@ -45,24 +45,18 @@ export const AddToFavoriteBtn = ({ productId }: { productId: string }) => {
   if (error) return <></>;
 
   return (
-    <>
-      {session && session?.user && (
-        <Button
-          variant="link"
-          size="iconMd"
-          type="button"
-          className="z-30 absolute bottom-0 right-0"
-          onClick={handleClick}
-        >
-          <Heart
-            className={
-              isFavorite
-                ? "text-destructive fill-destructive"
-                : "text-destructive"
-            }
-          />
-        </Button>
-      )}
-    </>
+    <Button
+      variant="link"
+      size="iconMd"
+      type="button"
+      className="z-30 absolute bottom-0 right-0"
+      onClick={handleClick}
+    >
+      <Heart
+        className={
+          isFavorite ? "text-destructive fill-destructive" : "text-destructive"
+        }
+      />
+    </Button>
   );
 };
