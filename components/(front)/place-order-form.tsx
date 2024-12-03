@@ -55,7 +55,7 @@ export const PlaceOrderForm = () => {
   const { toast } = useToast();
 
   const { trigger: placeOrder, isMutating: isPlacing } = useSWRMutation(
-    `/api/orders`,
+    `/api/orders/mine`,
     async () => {
       const res = await fetch("/api/orders", {
         method: "POST",
@@ -73,6 +73,7 @@ export const PlaceOrderForm = () => {
         }),
       });
       const data = await res.json();
+
       if (res.ok) {
         clear();
         toast({
@@ -83,6 +84,7 @@ export const PlaceOrderForm = () => {
         toast({
           variant: "destructive",
           title: data.message,
+          description: "TEST",
         });
       }
     }

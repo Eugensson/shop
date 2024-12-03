@@ -7,11 +7,11 @@ import { PaginationBar } from "@/components/(front)/pagination-bar";
 import { convertDocToObj } from "@/lib/utils";
 import { getByQuery, getMinMaxPrices } from "@/lib/services/productService";
 
-export async function generateMetadata({
+export const generateMetadata = async ({
   searchParams,
 }: {
   searchParams: Promise<{ [key: string]: string }>;
-}) {
+}) => {
   const searchParamsObj = await searchParams;
 
   const q = searchParamsObj.q || "all";
@@ -39,7 +39,7 @@ export async function generateMetadata({
       title: "Search Products",
     };
   }
-}
+};
 
 const Catalog = async ({
   searchParams,

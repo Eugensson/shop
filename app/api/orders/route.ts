@@ -27,6 +27,8 @@ export const POST = auth(async (req: any) => {
   try {
     const payload = await req.json();
 
+    console.log("payload", payload);
+
     await dbConnect();
 
     const dbProductPrices = await ProductModel.find(

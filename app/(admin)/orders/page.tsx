@@ -1,5 +1,14 @@
+import { Metadata } from "next";
+
+import { columns } from "@/app/(admin)/orders/columns";
+import { DataTable } from "@/app/(admin)/orders/data-table";
+
+export const metadata: Metadata = {
+  title: "Orders",
+};
+
 const Orders = () => {
-  return <section>Orders</section>;
+  return <DataTable columns={columns} />;
 };
 
 export default Orders;

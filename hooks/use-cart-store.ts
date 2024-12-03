@@ -22,7 +22,7 @@ const initialState: Cart = {
   taxPrice: 0,
   shippingPrice: 0,
   totalPrice: 0,
-  paymentMethod: "Cash_On_Delivery",
+  paymentMethod: "PayPal",
   shippingAddress: {
     fullName: "",
     address: "",
@@ -59,9 +59,7 @@ export const useCartService = () => {
       const exist = items.find((x) => x.slug === item.slug);
       const newQuantity = exist ? exist.quantity + 1 : 1;
 
-      if (newQuantity > item.countInStock) {
-        return; // Тост вже не потрібно тут, просто виходимо
-      }
+      if (newQuantity > item.countInStock) return;
 
       const updatedCartItems = exist
         ? items.map((x) =>
