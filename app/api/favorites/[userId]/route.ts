@@ -59,6 +59,7 @@ export const GET = async (
 ) => {
   try {
     await dbConnect();
+
     const userId = await getUserIdFromParams({ params });
 
     if (!userId || !Types.ObjectId.isValid(userId)) {
