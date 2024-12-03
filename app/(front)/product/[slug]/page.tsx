@@ -11,7 +11,7 @@ import { ProductImages } from "@/components/(front)/product-images";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 
 import { convertProdToItem } from "@/lib/utils";
-import { getProductBySlug } from "@/lib/services/productService";
+import { getProductBySlug } from "@/lib/services/product-service";
 import { AdditionalInfo } from "@/components/(front)/additional-info";
 
 export async function generateMetadata({

@@ -7,6 +7,7 @@ export type User = {
   email: string;
   password: string;
   isAdmin: boolean;
+  favoriteProducts: Types.ObjectId[];
 };
 
 const UserSchema = new Schema(
@@ -29,6 +30,11 @@ const UserSchema = new Schema(
       type: Boolean,
       required: true,
       default: false,
+    },
+    favoriteProducts: {
+      type: [Types.ObjectId],
+      ref: "Product",
+      default: [],
     },
   },
   { timestamps: true, versionKey: false }

@@ -20,7 +20,7 @@ import { IoHomeOutline } from "react-icons/io5";
 import { LiaTelegramPlane } from "react-icons/lia";
 import { MdBiotech, MdOutlineContactPhone } from "react-icons/md";
 
-export const PAGE_SIZE = 12;
+export const PAGE_SIZE = 6;
 
 export const RATINGS = [5, 4, 3, 2, 1];
 

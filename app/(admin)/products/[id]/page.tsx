@@ -3,7 +3,7 @@ import { EditProductForm } from "@/components/(admin)/edit-product-form";
 import {
   getUniqueBrands,
   getUniqueCategories,
-} from "@/lib/services/productService";
+} from "@/lib/services/product-service";
 
 export const generateMetadata = async ({
   params,

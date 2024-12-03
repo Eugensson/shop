@@ -3,6 +3,7 @@ import { cache } from "react";
 import { PAGE_SIZE } from "@/constants";
 
 import { dbConnect } from "@/lib/db-connect";
+import { User, UserModel } from "@/lib/models/user-model";
 import { ProductModel, Product } from "@/lib/models/product-model";
 
 export type LeanProduct = Omit<Product, "_id" | "__v"> & { _id: string };
@@ -187,3 +188,32 @@ export const getLatestProducts = cache(async () => {
     throw new Error("Unable to fetch latest products");
   }
 });
+
+export const getFavoriteProductsByUserId = cache(
+  async (userId: string): Promise<LeanProduct[]> => {
+    try {
+      await dbConnect();
+
+      const user = await UserModel.findById(userId).lean<User>().exec();
+
+      if (!user) {
+        throw new Error("User not found");
+      }
+
+      const favoriteProductIds = user.favoriteProducts;
+
+      if (!favoriteProductIds || favoriteProductIds.length === 0) {
+        return [];
+      }
+
+      const favoriteProducts = await ProductModel.find({
+        _id: { $in: favoriteProductIds },
+      }).lean<LeanProduct[]>();
+
+      return favoriteProducts;
+    } catch (error) {
+      console.error("Error fetching favorite products:", error);
+      throw new Error("Unable to fetch favorite products");
+    }
+  }
+);

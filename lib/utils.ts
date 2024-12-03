@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 import { clsx, type ClassValue } from "clsx";
 
 import { Order } from "@/lib/models/order-model";
-import { LeanProduct } from "@/lib/services/productService";
+import { LeanProduct } from "@/lib/services/product-service";
 
 export const cn = (...inputs: ClassValue[]) => {
   return twMerge(clsx(inputs));

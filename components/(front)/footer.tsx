@@ -13,7 +13,6 @@ export const Footer = () => {
           </p>
         </div>
       </div>
-      ss
     </footer>
   );
 };

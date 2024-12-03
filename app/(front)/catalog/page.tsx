@@ -5,7 +5,7 @@ import { SerchResults } from "@/components/(front)/search-result";
 import { PaginationBar } from "@/components/(front)/pagination-bar";
 
 import { convertDocToObj } from "@/lib/utils";
-import { getByQuery, getMinMaxPrices } from "@/lib/services/productService";
+import { getByQuery, getMinMaxPrices } from "@/lib/services/product-service";
 
 export const generateMetadata = async ({
   searchParams,
