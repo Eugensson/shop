@@ -12,7 +12,6 @@ import {
 import { Badge } from "@/components/ui/badge";
 import { Rating } from "@/components/(front)/rating";
 import { ProductPrice } from "@/components/(front)/product-price";
-import { AddToFavoriteBtn } from "@/components/(front)/add-to-favorite-btn";
 
 import { Product } from "@/lib/models/product-model";
 
@@ -46,7 +45,6 @@ export const ProductCard = async ({ product }: { product: Product }) => {
           >
             sku: {product.sku}
           </Badge>
-          <AddToFavoriteBtn productId={product._id?.toString() || ""} />
         </figure>
       </CardContent>
       <CardHeader>
