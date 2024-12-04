@@ -14,11 +14,11 @@ import { cn } from "@/lib/utils";
 
 interface PaginProps {
   filterParams: {
-    q: string;
-    category: string;
-    price: string;
-    rating: string;
-    sort: string;
+    q?: string;
+    category?: string;
+    price?: string;
+    rating?: string;
+    sort?: string;
     page: string;
   };
   totalPages: number;

@@ -22,6 +22,8 @@ import { MdBiotech, MdOutlineContactPhone } from "react-icons/md";
 
 export const PAGE_SIZE = 6;
 
+export const PAGE_SIZE_POST = 4;
+
 export const RATINGS = [5, 4, 3, 2, 1];
 
 export const ADMIN_LINKS = [

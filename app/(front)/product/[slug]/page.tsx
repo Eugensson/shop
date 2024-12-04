@@ -9,16 +9,17 @@ import { ProductPrice } from "@/components/(front)/product-price";
 import { AddToCartBtn } from "@/components/(front)/add-to-cart-btn";
 import { ProductImages } from "@/components/(front)/product-images";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-
-import { convertProdToItem } from "@/lib/utils";
-import { getProductBySlug } from "@/lib/services/product-service";
 import { AdditionalInfo } from "@/components/(front)/additional-info";
 
-export async function generateMetadata({
+import { convertProdToItem } from "@/lib/utils";
+
+import { getProductBySlug } from "@/lib/services/product-service";
+
+export const generateMetadata = async ({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}) => {
   const slug = (await params).slug;
   try {
     const product = await getProductBySlug(slug);
@@ -34,7 +35,7 @@ export async function generateMetadata({
     console.error("Error generating metadata:", error);
     return { title: "Product not found" };
   }
-}
+};
 
 const ProductDetails = async ({
   params,
