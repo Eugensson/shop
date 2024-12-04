@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Metadata } from "next";
 
 import {
@@ -7,7 +8,6 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Technology",

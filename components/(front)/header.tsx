@@ -6,7 +6,7 @@ import { FavoriteInfo } from "@/components/(front)/favorite-info";
 
 export const Header = () => {
   return (
-    <header className="h-fit sticky top-0 z-50 bg-background pb-2">
+    <header className="h-fit sticky top-0 z-50 bg-background">
       <div className="border-b border-muted-foreground">
         <div className="container flex justify-between items-center gap-4">
           <Logo />
