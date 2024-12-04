@@ -19,14 +19,6 @@ const News = async ({
   const q = searchParamsObj.q || "all";
   const page = searchParamsObj.page || "1";
 
-  // const getFilterUrl = ({ pg }: { pg?: string }) => {
-  //   const params = { q, page };
-
-  //   if (pg) params.page = pg;
-
-  //   return `/catalog?${new URLSearchParams(params).toString()}`;
-  // };
-
   const { countPosts, posts, pages } = await getByQuery({ q, page });
 
   const filterParams = { q, page };
