@@ -1,74 +1,36 @@
 "use client";
 
 import { Heart } from "lucide-react";
-import useSWR, { mutate } from "swr";
-import { useSession } from "next-auth/react";
 
 import { Button } from "@/components/ui/button";
 
-import { useFavorites } from "@/hooks/use-favorites";
+import { useFavoriteService } from "@/hooks/use-favorite-service";
 
-const fetchFavorites = async (userId: string) => {
-  const res = await fetch(`/api/favorites/${userId}`);
-
-  if (!res.ok) throw new Error("Failed to fetch favorites");
-
-  return res.json();
+type AddToFavoriteBtnProps = {
+  productId: string;
 };
 
-export const AddToFavoriteBtn = ({ productId }: { productId: string }) => {
-  const { data: session } = useSession();
+export const AddToFavoriteBtn = ({ productId }: AddToFavoriteBtnProps) => {
+  const { favorites, addToFavorites, removeFromFavorites } =
+    useFavoriteService();
 
-  console.log("session", session);
+  const isFavorite = favorites.includes(productId);
 
-  const { addToFavorites, removeFromFavorites } = useFavorites(
-    session?.user._id?.toString() || ""
-  );
-
-  const { data: updatedFavorites, error } = useSWR(
-    session?.user._id ? `/api/favorites/${session.user._id}` : null,
-    () => fetchFavorites(session?.user._id || "")
-  );
-
-  const isFavorite = updatedFavorites?.some(
-    (fav: { _id: string }) => fav._id === productId
-  );
-
-  const handleClick = async () => {
-    if (!session?.user._id) return;
-
+  const handleClick = () => {
     if (isFavorite) {
-      await removeFromFavorites(productId);
+      removeFromFavorites(productId);
     } else {
-      await addToFavorites(productId);
+      addToFavorites(productId);
     }
-
-    mutate(`/api/favorites/${session.user._id}`);
   };
-
-  if (error) return <></>;
-
-  if (!session) {
-    return (
-      <Button
-        variant="link"
-        size="iconMd"
-        type="button"
-        className="z-30 absolute bottom-0 right-0 cursor-not-allowed opacity-50"
-        disabled
-      >
-        <Heart className="text-gray-400" />
-      </Button>
-    );
-  }
 
   return (
     <Button
+      onClick={handleClick}
       variant="link"
       size="iconMd"
-      type="button"
       className="z-30 absolute bottom-0 right-0"
-      onClick={handleClick}
+      aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
     >
       <Heart
         className={

@@ -2,6 +2,7 @@ import { Nav } from "@/components/(front)/nav";
 import { Logo } from "@/components/(front)/logo";
 import { Cart } from "@/components/(front)/cart";
 import { UserButton } from "@/components/user-button";
+import { FavoriteInfo } from "@/components/(front)/favorite-info";
 
 export const Header = () => {
   return (
@@ -11,6 +12,7 @@ export const Header = () => {
           <Logo />
           <Nav />
           <div className="flex items-center gap-5">
+            <FavoriteInfo />
             <Cart />
             <UserButton />
           </div>
