@@ -30,6 +30,7 @@ const Contact = () => {
                 rel="noreferrer"
                 target="_blank"
                 aria-label="+380965300300"
+                className="underline-offset-2 hover:underline"
               >
                 +38 096 5 300 300
               </Link>
@@ -40,6 +41,7 @@ const Contact = () => {
                 rel="noreferrer"
                 target="_blank"
                 aria-label="+380665300300"
+                className="underline-offset-2 hover:underline"
               >
                 +38 066 5 300 300
               </Link>
@@ -50,6 +52,7 @@ const Contact = () => {
                 rel="noreferrer"
                 target="_blank"
                 aria-label="+380682300300"
+                className="underline-offset-2 hover:underline"
               >
                 +38 068 2 300 300
               </Link>
@@ -65,7 +68,7 @@ const Contact = () => {
             rel="noreferrer"
             target="_blank"
             aria-label="pokrov-ltd@ukr.net"
-            className="ml-8"
+            className="ml-8 underline-offset-2 hover:underline"
           >
             pokrov-ltd@ukr.net
           </Link>
