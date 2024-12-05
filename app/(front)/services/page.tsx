@@ -159,7 +159,7 @@ const Services = () => {
         <CardContent className="p-0">
           <article>
             <Image
-              src="/services_3.jpg"
+              src="/cross.jpg"
               alt="Photo of products"
               width={600}
               height={600}

@@ -13,8 +13,8 @@ export const metadata: Metadata = {
 
 const Contact = () => {
   return (
-    <section className="container py-10 h-full grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
-      <Card className="p-1 md:p-2 xl:p-4">
+    <section className="container min-h-screen items-center grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
+      <Card className="p-5 h-fit min-h-[450px] md:p-2 xl:p-4">
         <CardHeader className="py-2">
           <CardTitle className="text-xl text-center">Contact Us</CardTitle>
         </CardHeader>
@@ -106,7 +106,7 @@ const Contact = () => {
           </ul>
         </CardContent>
       </Card>
-      <Card className="p-1 md:p-2 xl:p-4">
+      <Card className="p-1 h-fit min-h-[450px] md:p-2 xl:p-4">
         <CardHeader className="py-2">
           <CardTitle className="text-xl text-center">Feedback Form</CardTitle>
         </CardHeader>
@@ -114,7 +114,7 @@ const Contact = () => {
           <FeedbackForm />
         </CardContent>
       </Card>
-      <Card className="md:col-span-2 xl:col-span-1">
+      <Card className="h-fit min-h-[450px] md:col-span-2 xl:col-span-1">
         <Map />
       </Card>
     </section>

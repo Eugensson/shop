@@ -1,6 +1,7 @@
-import { getPostBySlug } from "@/lib/services/post-service";
-import { convertDocToObj } from "@/lib/utils";
 import { notFound } from "next/navigation";
+
+import { convertDocToObj } from "@/lib/utils";
+import { getPostBySlug } from "@/lib/services/post-service";
 
 export const generateMetadata = async ({
   params,

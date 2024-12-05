@@ -3,6 +3,7 @@ import { NextResponse } from "next/server";
 import sampleData from "@/lib/sample-data";
 import { dbConnect } from "@/lib/db-connect";
 import { UserModel } from "@/lib/models/user-model";
+import { FrameModel } from "@/lib/models/frame-model";
 import { ProductModel } from "@/lib/models/product-model";
 
 export const GET = async () => {
@@ -16,7 +17,7 @@ export const GET = async () => {
   try {
     await dbConnect();
 
-    const { users, products } = sampleData;
+    const { users, products, frames } = sampleData;
 
     await UserModel.deleteMany();
     await UserModel.insertMany(users);
@@ -24,10 +25,14 @@ export const GET = async () => {
     await ProductModel.deleteMany();
     await ProductModel.insertMany(products);
 
+    await FrameModel.deleteMany();
+    await FrameModel.insertMany(frames);
+
     return NextResponse.json({
       message: "Database seeded successfully",
       usersCount: users.length,
       productsCount: products.length,
+      framesCount: frames.length,
     });
   } catch (error) {
     console.error("Error during database seeding:", error);

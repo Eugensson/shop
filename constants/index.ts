@@ -1,6 +1,7 @@
 import {
   Calendar,
   ChartNoAxesCombined,
+  ImagesIcon,
   Inbox,
   Rss,
   Settings,
@@ -33,6 +34,7 @@ export const ADMIN_LINKS = [
   { title: "Orders", url: "/orders", icon: Calendar },
   { title: "Users", url: "/users", icon: Users },
   { title: "Blog", url: "/blog", icon: Rss },
+  { title: "Gallery", url: "/portfolio", icon: ImagesIcon },
   { title: "Settings", url: "/settings", icon: Settings },
 ];
 

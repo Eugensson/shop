@@ -78,6 +78,26 @@ body,
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+
+  .custom-zoom [data-rmiz-modal-overlay],
+  .custom-zoom [data-rmiz-modal-img] {
+    transition-duration: 0.8s;
+    transition-timing-function: linear;
+  }
+  .custom-zoom [data-rmiz-modal-overlay="hidden"] {
+    background-color: #000000e6;
+  }
+  .custom-zoom [data-rmiz-modal-overlay="visible"] {
+    background-color: #000000e6;
+  }
+  .custom-zoom [data-rmiz-btn-unzoom] {
+    background-color: #000000;
+    color: #ffffff;
+  }
+  .custom-zoom [data-rmiz-btn-unzoom]:focus-visible {
+    outline-offset: 0.2rem;
+    outline: 0.1rem solid #ffffff;
+  }
 }
 
 @layer base {

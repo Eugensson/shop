@@ -1,11 +1,24 @@
+import { InfoCard } from "@/components/(front)/info-card";
+import { getUniqueCategories } from "@/lib/services/product-service";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Gallery",
 };
 
-const Gallery = () => {
-  return <section className="container py-10 h-full">Gallery</section>;
+const Gallery = async () => {
+  const categories = await getUniqueCategories();
+  return (
+    <section className="container py-10 min-h-screen">
+      <ul className="grid grid-cols-1 xl:grid-cols-2 gap-5">
+        {categories.map((category) => (
+          <li key={category}>
+            <InfoCard category={category} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
 };
 
 export default Gallery;
