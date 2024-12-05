@@ -18,7 +18,7 @@ export const FavoriteInfo = () => {
   if (!hasMounted) return <Heart />;
 
   return (
-    <div className="relative">
+    <div className="relative cursor-pointer">
       <Heart />
       {favoriteCount !== 0 && (
         <Badge

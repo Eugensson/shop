@@ -78,7 +78,7 @@ export const Cart = () => {
 
   return (
     <Sheet>
-      <SheetTrigger asChild className="relative">
+      <SheetTrigger asChild className="relative cursor-pointer">
         <div>
           <ShoppingBag />
           {totalItems > 0 && (

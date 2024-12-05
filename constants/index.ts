@@ -39,13 +39,13 @@ export const ADMIN_LINKS = [
 ];
 
 export const NAV_LINKS = [
-  { label: "Home", src: "/", icon: IoHomeOutline },
-  { label: "Services", src: "/services", icon: GrServices },
-  { label: "Technology", src: "/technology", icon: MdBiotech },
-  { label: "Catalog", src: "/catalog", icon: CiShoppingTag },
-  { label: "Gallery", src: "/gallery", icon: SlPicture },
-  { label: "News", src: "/news", icon: ImNewspaper },
-  { label: "Contact", src: "/contact", icon: MdOutlineContactPhone },
+  { label: "Головна", src: "/", icon: IoHomeOutline },
+  { label: "Послуги", src: "/services", icon: GrServices },
+  { label: "Технологія", src: "/technology", icon: MdBiotech },
+  { label: "Каталог", src: "/catalog", icon: CiShoppingTag },
+  { label: "Галерея", src: "/gallery", icon: SlPicture },
+  { label: "Новини", src: "/news", icon: ImNewspaper },
+  { label: "Контакти", src: "/contact", icon: MdOutlineContactPhone },
 ];
 
 export const SOCIAL_LINKS = [

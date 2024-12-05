@@ -16,13 +16,13 @@ export const Nav = ({ footer }: NavProps) => {
 
   return (
     <nav className="hidden md:block">
-      <ul className="w-full flex justify-between gap-6">
+      <ul className="w-full flex justify-center gap-4 py-4">
         {NAV_LINKS.map(({ label, src, icon: Icon }, index) => (
           <li key={index}>
             <Link
               href={src}
               className={cn(
-                `flex items-stretch gap-2 uppercase font-normal text-base tracking-widest transition-colors ${
+                `flex items-stretch gap-2 uppercase font-normal text-sm lg:text-base transition-colors ${
                   footer
                     ? "text-muted-foreground hover:text-secondary dark:text-primary/50 dark-hover:text-primary"
                     : "text-primary/80 hover:text-primary"

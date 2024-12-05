@@ -30,8 +30,6 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
 export const UserButton = () => {
   const { data: session } = useSession();
   const { theme, setTheme } = useTheme();
@@ -42,13 +40,8 @@ export const UserButton = () => {
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Avatar className="cursor-pointer">
-          <AvatarImage src={session?.user?.image || ""} />
-          <AvatarFallback>
-            <User size={20} />
-          </AvatarFallback>
-        </Avatar>
+      <DropdownMenuTrigger className="cursor-pointer outline-none">
+        <User />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end">
         {session?.user ? (

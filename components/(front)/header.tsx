@@ -11,7 +11,7 @@ export const Header = () => {
         <div className="container flex justify-between items-center gap-4">
           <Logo />
           <Nav />
-          <div className="flex items-center gap-5">
+          <div className="flex items-center gap-2 lg:gap-5">
             <FavoriteInfo />
             <Cart />
             <UserButton />
