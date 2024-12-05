@@ -80,7 +80,7 @@ export const Cart = () => {
     <Sheet>
       <SheetTrigger asChild className="relative cursor-pointer">
         <div>
-          <ShoppingBag />
+          <ShoppingBag className="text-white" />
           {totalItems > 0 && (
             <Badge
               variant="destructive"

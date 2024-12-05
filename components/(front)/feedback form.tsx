@@ -77,7 +77,7 @@ export const FeedbackForm = () => {
             <FormItem>
               <FormControl>
                 <div className="relative">
-                  <Input placeholder="John Doe" {...field} className="pl-10" />
+                  <Input placeholder="П.І.Б." {...field} className="pl-10" />
                   <UserRound className="absolute top-1/2 left-2 -translate-y-1/2 text-muted-foreground" />
                 </div>
               </FormControl>
@@ -119,7 +119,7 @@ export const FeedbackForm = () => {
                 <div className="relative">
                   <Input
                     className="pl-10"
-                    placeholder="john.doe@example.com"
+                    placeholder="example@mail.com"
                     {...field}
                   />
                   <AtSign className="absolute top-1/2 left-2 -translate-y-1/2 text-muted-foreground" />
@@ -136,7 +136,7 @@ export const FeedbackForm = () => {
             <FormItem>
               <FormControl>
                 <Textarea
-                  placeholder="Enter message text..."
+                  placeholder="Текст повідомлення..."
                   rows={3}
                   {...field}
                 />

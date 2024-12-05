@@ -16,12 +16,14 @@ const Contact = () => {
     <section className="container min-h-screen items-center grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
       <Card className="p-5 h-fit min-h-[450px] md:p-2 xl:p-4">
         <CardHeader className="py-2">
-          <CardTitle className="text-xl text-center">Contact Us</CardTitle>
+          <CardTitle className="text-xl text-center">
+            Зв&apos;яжіться з нами
+          </CardTitle>
         </CardHeader>
         <CardContent className="p-0">
           <h2 className="flex items-stretch gap-2 uppercase text-xl font-semibold text-muted-foreground">
             <PhoneCall />
-            Phones
+            Телефони
           </h2>
           <ul className="ml-8">
             <li>
@@ -61,7 +63,7 @@ const Contact = () => {
           <Separator className="my-1" />
           <h2 className="flex items-stretch gap-2 uppercase text-xl font-semibold text-muted-foreground">
             <Mail />
-            Mail
+            Електронна пошта
           </h2>
           <Link
             href="mailto:pokrov-ltd@ukr.net"
@@ -75,23 +77,26 @@ const Contact = () => {
           <Separator className="my-1" />
           <h2 className="flex items-stretch gap-2 uppercase text-xl font-semibold text-muted-foreground">
             <CalendarClock />
-            Opening hours
+            Години роботи
           </h2>
           <ul className="ml-8">
-            <li>
-              <p>Mo-Fr: 9:00 – 18:00</p>
+            <li className="flex items-center gap-3">
+              <p>Пн-Пт:</p>
+              <p>9:00 – 18:00</p>
             </li>
-            <li>
-              <p>Sat: 10:00 – 16:00</p>
+            <li className="flex items-center gap-10">
+              <p>Сб:</p>
+              <p>10:00 – 16:00</p>
             </li>
-            <li>
-              <p>Sun: closed</p>
+            <li className="flex items-center gap-10">
+              <p>Нд:</p>
+              <p>вихідний</p>
             </li>
           </ul>
           <Separator className="my-1" />
           <h2 className="flex items-stretch gap-2 uppercase text-xl font-semibold text-muted-foreground">
             <Building />
-            Location
+            Місце знаходження
           </h2>
           <ul className="ml-8">
             <li>
@@ -108,7 +113,9 @@ const Contact = () => {
       </Card>
       <Card className="p-1 h-fit min-h-[450px] md:p-2 xl:p-4">
         <CardHeader className="py-2">
-          <CardTitle className="text-xl text-center">Feedback Form</CardTitle>
+          <CardTitle className="text-xl text-center">
+            Форма зворотного зв&apos;язку
+          </CardTitle>
         </CardHeader>
         <CardContent className="p-0">
           <FeedbackForm />

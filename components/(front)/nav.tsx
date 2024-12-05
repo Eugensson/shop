@@ -22,17 +22,9 @@ export const Nav = ({ footer }: NavProps) => {
             <Link
               href={src}
               className={cn(
-                `flex items-stretch gap-2 uppercase font-normal text-sm lg:text-base transition-colors ${
-                  footer
-                    ? "text-muted-foreground hover:text-secondary dark:text-primary/50 dark-hover:text-primary"
-                    : "text-primary/80 hover:text-primary"
-                }`,
+                "flex items-stretch gap-2 uppercase font-normal text-sm lg:text-base transition-colors text-muted-foreground hover:text-secondary dark:text-primary/50 dark-hover:text-primary",
                 pathname === src &&
-                  `${
-                    footer
-                      ? "text-secondary font-semibold dark:text-primary"
-                      : "text-primary font-semibold"
-                  }`
+                  "text-secondary font-semibold dark:text-primary"
               )}
             >
               {footer && <Icon size={20} />}
