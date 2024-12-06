@@ -53,13 +53,13 @@ export const SerchResults = ({
       {category && category !== "all" && (
         <Badge variant="outline" className="w-fit capitalize">
           <span className="text-muted-foreground mr-1">category:</span>
-          {category}
+          {category.split(",").join(", ")}
         </Badge>
       )}
       {brand && brand !== "all" && (
         <Badge variant="outline" className="w-fit capitalize">
           <span className="text-muted-foreground mr-1">brand:</span>
-          {brand}
+          {brand.split(",").join(", ")}
         </Badge>
       )}
       {price && price !== "all" && (

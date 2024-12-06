@@ -103,9 +103,13 @@ export const getByQuery = cache(
           }
         : {};
 
-    const brandFilter = brand && brand !== "all" ? { brand } : {};
+    const brandFilter =
+      brand && brand !== "all" ? { brand: { $in: brand.split(",") } } : {};
 
-    const categoryFilter = category && category !== "all" ? { category } : {};
+    const categoryFilter =
+      category && category !== "all"
+        ? { category: { $in: category.split(",") } }
+        : {};
 
     const ratingFilter =
       rating !== "all"
