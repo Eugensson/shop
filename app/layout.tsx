@@ -21,10 +21,10 @@ const lora = Lora({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Shop",
-    absolute: "Shop",
+    template: "%s | НВФ Покров",
+    absolute: "НВФ Покров",
   },
-  description: "e-Commerce",
+  description: "Науково-виробнича фірма Покров",
 };
 
 export default async function RootLayout({

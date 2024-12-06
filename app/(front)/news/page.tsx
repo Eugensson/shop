@@ -6,7 +6,7 @@ import { PaginationBar } from "@/components/(front)/pagination-bar";
 import { convertDocToObj } from "@/lib/utils";
 
 export const metadata: Metadata = {
-  title: "News",
+  title: "Новини",
 };
 
 const News = async ({

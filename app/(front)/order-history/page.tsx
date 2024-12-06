@@ -3,7 +3,7 @@ import { CalendarClock } from "lucide-react";
 import { MyOrderList } from "@/components/(front)/my-order-list";
 
 export const metadata: Metadata = {
-  title: "Order History",
+  title: "Історія замовлень",
 };
 
 const OrderHistory = () => {

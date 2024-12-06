@@ -8,7 +8,7 @@ import { FeedbackForm } from "@/components/(front)/feedback form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Contact",
+  title: "Контакти",
 };
 
 const Contact = () => {

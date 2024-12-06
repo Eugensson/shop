@@ -164,7 +164,7 @@ export const columns: ColumnDef<ProductRow>[] = [
     cell: ({ row }) => {
       const name = row.getValue("name") as string;
 
-      return <p className="col-span-2 ml-4 truncate">{name}</p>;
+      return <p className="max-w-96 line-clamp-2 ml-4">{name}</p>;
     },
   },
   {

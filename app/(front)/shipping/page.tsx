@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { ShippingAddressForm } from "@/components/(front)/shipping-form";
 
 export const metadata: Metadata = {
-  title: "Place an order",
+  title: "Оформлення доставки",
 };
 
 const Shipping = () => {

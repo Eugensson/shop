@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { PlaceOrderForm } from "@/components/(front)/place-order-form";
 
 export const metadata: Metadata = {
-  title: "Place Order",
+  title: "Дані про замовлення",
 };
 
 const PlaceOrder = () => {

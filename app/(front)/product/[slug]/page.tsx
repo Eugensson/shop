@@ -24,7 +24,7 @@ export const generateMetadata = async ({
   try {
     const product = await getProductBySlug(slug);
     if (!product) {
-      return { title: "Product not found" };
+      return { title: "Товар не знайдено" };
     }
 
     return {
@@ -33,7 +33,7 @@ export const generateMetadata = async ({
     };
   } catch (error) {
     console.error("Error generating metadata:", error);
-    return { title: "Product not found" };
+    return { title: "Товар не знайдено" };
   }
 };
 

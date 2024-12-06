@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 
 export const metadata: Metadata = {
-  title: "Technology",
+  title: "Течнологія",
 };
 
 const Technology = () => {

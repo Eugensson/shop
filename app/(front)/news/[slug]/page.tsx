@@ -13,7 +13,7 @@ export const generateMetadata = async ({
     const post = await getPostBySlug(slug);
 
     if (!post) {
-      return { title: "News not found" };
+      return { title: "Новини не знайдені" };
     }
 
     return {
@@ -22,7 +22,7 @@ export const generateMetadata = async ({
     };
   } catch (error) {
     console.error("Error generating metadata:", error);
-    return { title: "Post not found" };
+    return { title: "Новини не знайдені" };
   }
 };
 

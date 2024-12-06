@@ -3,7 +3,7 @@ import { getUniqueCategories } from "@/lib/services/product-service";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Gallery",
+  title: "Галерея",
 };
 
 const Gallery = async () => {

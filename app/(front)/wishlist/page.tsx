@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Wishlist",
+  title: "Список побажань",
 };
 
 const Wishlist = async () => {

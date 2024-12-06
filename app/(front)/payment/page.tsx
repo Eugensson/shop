@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { PaymentForm } from "@/components/(front)/payment-form";
 
 export const metadata: Metadata = {
-  title: "Payment Method",
+  title: "Платіжний формат",
 };
 
 const Payment = () => {

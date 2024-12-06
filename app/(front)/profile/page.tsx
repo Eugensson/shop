@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { EditProfileForm } from "@/components/(front)/edit-profile-form";
 
 export const metadata: Metadata = {
-  title: "Profile",
+  title: "Профіль користувача",
 };
 
 const Profile = () => {

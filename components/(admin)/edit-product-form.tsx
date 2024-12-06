@@ -284,6 +284,7 @@ export const EditProductForm = ({
           </div>
 
           <div className="space-y-4">
+            <FormInput name="Sku" id="sku" required />
             <div className="flex flex-col gap-2">
               <FormInput
                 name="Brand"

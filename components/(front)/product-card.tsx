@@ -20,7 +20,7 @@ export const ProductCard = async ({ product }: { product: Product }) => {
   const imageUrl = product.thumbnail || "/placeholder.png";
 
   return (
-    <Card className="h-fit">
+    <Card className="h-fit overflow-hidden">
       <CardContent className="p-0">
         <figure className="overflow-hidden relative">
           <Link href={`/product/${product.slug}`}>

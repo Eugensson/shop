@@ -12,15 +12,15 @@ export const generateMetadata = async ({
     const frames = await getFramesByCategory(category);
 
     if (!frames) {
-      return { title: "Frames not found" };
+      return { title: "Зображення не знайдені" };
     }
 
     return {
-      title: `Gallery: ${category}`,
+      title: `Галерея: ${category}`,
     };
   } catch (error) {
     console.error("Error generating metadata:", error);
-    return { title: "Frames not found" };
+    return { title: "Зображення не знайдені" };
   }
 };
 

@@ -8,7 +8,7 @@ export const generateMetadata = async ({
 }) => {
   const id = (await params).id;
   return {
-    title: `Order ${id}`,
+    title: `Замовлення #${id}`,
   };
 };
 
