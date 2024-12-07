@@ -114,15 +114,8 @@ export const EditProductForm = ({
     setValue("discount", discount);
     setValue("rating", rating);
     setValue("countInStock", countInStock);
-    setValue(
-      "category",
-      product.category.trim().toLowerCase() ??
-        selectedCategory.trim().toLowerCase()
-    );
-    setValue(
-      "brand",
-      product.brand.trim().toLowerCase() ?? selectedBrand.trim().toLowerCase()
-    );
+    setValue("category", selectedCategory.trim().toLowerCase());
+    setValue("brand", selectedBrand.trim().toLowerCase());
     setValue("sku", sku);
     setValue("images", images);
     setValue("thumbnail", thumbnail);
@@ -185,11 +178,13 @@ export const EditProductForm = ({
     required,
     pattern,
     placeholder,
+    disabled,
   }: {
     id: keyof Product;
     name: string;
     required?: boolean;
     placeholder?: string;
+    disabled?: boolean;
     pattern?: ValidationRule<RegExp>;
   }) => (
     <div className="flex flex-col w-full">
@@ -216,6 +211,7 @@ export const EditProductForm = ({
             required: required && `* ${name} is required`,
             pattern,
           })}
+          disabled={disabled}
           placeholder={placeholder}
           className="w-full"
         />
@@ -246,7 +242,7 @@ export const EditProductForm = ({
         >
           <div className="space-y-4">
             <FormInput name="Name" id="name" required />
-            <FormInput name="Slug" id="slug" required />
+            <FormInput name="Slug" id="slug" required disabled />
             <FormInput name="Price" id="price" required />
             <FormInput name="Count In Stock" id="countInStock" required />
             <div className="flex flex-col gap-2">

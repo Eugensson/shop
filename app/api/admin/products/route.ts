@@ -24,7 +24,7 @@ export const POST = auth(async (req: any) => {
     name: "Sample Name",
     description: "Sample Description",
     slug: "sample-slug",
-    sku: `sku-${Date.now()}`,
+    sku: Date.now(),
     category: "Sample Category",
     price: 0,
     discount: null,

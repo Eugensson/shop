@@ -551,6 +551,23 @@ const sampleData = {
       numReviews: 26,
       isFeatured: true,
     },
+    {
+      name: "Хрест церковний накупольний",
+      slug: "hrest-cerkovnij-nakupolnij-1733570442075",
+      description:
+        "Хрест церковний накупольний, нержавіюча сталь, покритий в золото, 0.75 м",
+      category: "хрести накупольні",
+      brand: "НВФ Покров (Україна)",
+      price: 12000,
+      discount: 0,
+      rating: 0,
+      countInStock: 1,
+      sku: "001001",
+      images: ["/images/kiwi-1.png"],
+      thumbnail: "/images/kiwi-thumbnail.png",
+      numReviews: 26,
+      isFeatured: true,
+    },
   ],
   frames: [
     { category: "beauty", image: "/frames/beauty_1.jpg" },

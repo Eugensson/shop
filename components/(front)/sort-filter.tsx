@@ -38,22 +38,22 @@ export const SortFilter = ({
 
   return (
     <Label className="flex items-center gap-2" htmlFor="sort">
-      Sort by:
+      Сортувати за:
       <Select onValueChange={handleSortChange} defaultValue={filterParams.sort}>
         <SelectTrigger className="w-full md:w-[180px]">
-          <SelectValue placeholder="Sort by:" />
+          <SelectValue placeholder="Сортувати за:" />
         </SelectTrigger>
         <SelectContent>
           {SORT_ORDERS.map((s: string) => (
             <SelectItem key={s} value={s}>
               {s === "newest"
-                ? "Newest"
+                ? "Новинками"
                 : s === "lowest"
-                ? "Price (low to high)"
+                ? "Ціною (зростанням)"
                 : s === "highest"
-                ? "Price (high to low)"
+                ? "Price (зниженням"
                 : s === "toprated"
-                ? "Top rated"
+                ? "Популярнішими"
                 : s}
             </SelectItem>
           ))}

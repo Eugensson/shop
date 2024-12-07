@@ -70,7 +70,7 @@ productSchema.statics.findMinMaxPrice = async function () {
 
 productSchema.pre("save", function (next) {
   if (this.name) {
-    this.slug = slugify(this.name, { lower: true });
+    this.slug = slugify(this.name, { lower: true }) + "-" + Date.now();
   }
   next();
 });

@@ -14,6 +14,7 @@ import { AdditionalInfo } from "@/components/(front)/additional-info";
 import { convertProdToItem } from "@/lib/utils";
 
 import { getProductBySlug } from "@/lib/services/product-service";
+import { TriangleAlert } from "lucide-react";
 
 export const generateMetadata = async ({
   params,
@@ -70,39 +71,53 @@ const ProductDetails = async ({
               variant="outline"
               className="px-4 py-1.5 rounded-none text-sm text-muted-foreground"
             >
-              Product code: {product.sku}
+              Артикул: {product.sku}
             </Badge>
           </li>
           <li>
             <Rating
               value={Number(product.rating)}
-              caption={`${product.rating.toFixed(0)} reviews`}
+              caption={`${product.numReviews.toFixed(0)} reviews`}
             />
           </li>
           <li>
             <h1 className="text-2xl font-bold">{product.name}</h1>
           </li>
           <li className="flex items-center gap-x-4">
-            <p className="text-muted-foreground min-w-60">Brand:</p>
+            <p className="text-muted-foreground min-w-60">Виробник:</p>
             <p className="font-semibold capitalize">{product.brand}</p>
           </li>
           <li className="flex items-center gap-x-4">
-            <p className="text-muted-foreground min-w-60">Category:</p>
-            <p className="font-semibold capitalize">{product.category}</p>
+            <p className="text-muted-foreground min-w-60">Категорія:</p>
+            <p className="font-semibold">
+              {product.category === "domes"
+                ? "Куполи церковні"
+                : product.category === "cross"
+                ? "Хрести накупольні"
+                : product.category === "decor"
+                ? "Декоративні елементи"
+                : "Аркуші з покриттям"}
+            </p>
           </li>
           <li className="space-y-2">
-            <p className="text-muted-foreground min-w-60">Description:</p>
+            <p className="text-muted-foreground min-w-60">Опис товару:</p>
             <p>{product.description}</p>
           </li>
           <li className="flex items-center gap-x-4">
-            <p className="text-muted-foreground min-w-60">Price:</p>
-            <ProductPrice
-              value={Number(product.price)}
-              className="w-fit font-semibold text-2xl rounded-lg bg-green-500/10 px-4 py-2 text-green-700"
-            />
+            <p className="text-muted-foreground min-w-60">Ціна за одиницю:</p>
+            {product.price === 0 ? (
+              <>Ціну уточнюйте</>
+            ) : (
+              <ProductPrice
+                value={Number(product.price)}
+                className="w-fit font-semibold text-2xl rounded-lg bg-green-500/10 px-4 py-2 text-green-700"
+              />
+            )}
           </li>
           <li className="space-y-2">
-            <p className="text-muted-foreground min-w-60">Additional Info:</p>
+            <p className="text-muted-foreground min-w-60">
+              Додаткова інформація:
+            </p>
             <AdditionalInfo />
           </li>
         </ul>
@@ -110,22 +125,39 @@ const ProductDetails = async ({
         <Card className="md:col-span-2 w-full md:w-1/2 ml-auto lg:w-full lg:col-span-1 h-fit">
           <CardContent className="p-2">
             <div className="flex items-center justify-between mb-4">
-              Price: <ProductPrice value={product.price} />
+              Ціна:{" "}
+              {product.price !== 0 ? (
+                <ProductPrice value={product.price} />
+              ) : (
+                <Badge variant="outline">Ціну уточнюйте</Badge>
+              )}
             </div>
             <div className="flex items-center justify-between mb-4">
-              Status
+              Статус
               {product.countInStock > 0 ? (
-                <Badge variant="outline">In stock</Badge>
+                <Badge variant="outline">В наявності</Badge>
               ) : (
-                <Badge variant="destructive">Unavailable</Badge>
+                <Badge variant="outline">Під замовлення</Badge>
               )}
             </div>
           </CardContent>
           <Separator className="my-4" />
           <CardFooter className="p-2 block space-y-4">
-            {product.countInStock && <AddToCartBtn item={item} />}
+            {product.countInStock > 0 ? (
+              <AddToCartBtn item={item} />
+            ) : (
+              <Button
+                variant="outline"
+                type="button"
+                size="lg"
+                className="w-full cursor-not-allowed"
+              >
+                <TriangleAlert />
+                Товар під замовлення
+              </Button>
+            )}
             <Button variant="outline" size="sm" className="w-full" asChild>
-              <Link href={"/catalog"}>Back to products</Link>
+              <Link href={"/catalog"}>Повернутись до каталогу</Link>
             </Button>
           </CardFooter>
         </Card>

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ShieldAlert, Truck, History, HandCoins } from "lucide-react";
+import { ShieldAlert, Truck, HandCoins } from "lucide-react";
 
 import {
   Accordion,
@@ -15,72 +15,63 @@ export const AdditionalInfo = () => {
         <AccordionTrigger>
           <p className="flex items-center gap-1">
             <HandCoins size={20} className="text-muted-foreground" />
-            Payment terms
+            Умови оплати
           </p>
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground">
-          You can place an order by calling the phone numbers listed in the{" "}
-          <Link
-            href="/contact"
-            className="text-blue-500 font-semibold hover:underline"
-          >
-            contacts
-          </Link>{" "}
-          section. Payment for the purchased goods is made via bank transfer to
-          the Seller&apos;s account according to the invoice, in the amount of
-          100% of the product&apos;s cost.
+          Оплата замовленого товару здійснюється одним із двох способів:{" "}
+          <span className="font-semibold">післяплата</span> (оплата під час
+          отримання товару) або{" "}
+          <span className="font-semibold">безготівковий переказ</span> (оплата
+          за реквізитами на розрахунковий рахунок Продавця згідно з
+          рахунком-фактуроюї). Оформити замовлення або отримати додаткову
+          інформації можна у розділі{" "}
+          <Link href="/contact" className="text-blue-500 hover:underline">
+            Контакти
+          </Link>
+          , у зручний для вас спосіб:
+          <ul className="list-disc list-inside">
+            <li>зателефонувавши за контактними номерами телефону;</li>
+            <li>надіславши повідомлення на електронну пошту;</li>
+            <li>заповнивши форму зворотного зв&apos;язку.</li>
+          </ul>
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="warranty">
         <AccordionTrigger>
           <p className="flex items-center gap-1">
             <ShieldAlert size={20} className="text-muted-foreground" />
-            Warranty
+            Гарантійні зобов&apos;язання
           </p>
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground">
-          No information
+          Ми гарантуємо 50-річну стійкість наших виробів із покриттям із нітриду
+          титану до впливу атмосферних умов, зокрема агресивних і промислових
+          середовищ. Цей гарантійний термін базується на результатах досліджень
+          впливу промислової атмосфери, виконаних відповідно до стандартів: ДСТУ
+          9.308-85, ДСТУ 9.908-85 та ДСТУ 92-1346-83. Вся продукція підприємства
+          «ПОКРОВ» відповідає вимогам нормативної документації: ТУ У
+          25.6-37651685-001:2012 «Покриття металеві іонно-плазмові». Якість
+          виробів підтверджена сертифікатом УкрСЕПРО №UA1.012.0006075-13.
         </AccordionContent>
       </AccordionItem>
       <AccordionItem value="shipping">
         <AccordionTrigger>
           <p className="flex items-center gap-1">
             <Truck size={20} className="text-muted-foreground" />
-            Shipping
+            Доставка
           </p>
         </AccordionTrigger>
         <AccordionContent className="text-muted-foreground">
-          The delivery of equipment is provided by the transportation companies
-          &quot;Nova Poshta&quot;, &quot;Delivery&quot; and &quot;Intime&quot;.
-          At the customer&apos;s discretion, the goods are delivered by the
-          transportation company most convenient for them. Shipment occurs after
-          the full payment for the goods is credited to our account. If the
-          payment is received after 1:00 PM, the goods are shipped the next
-          business day after the payment is credited. The delivery time depends
-          on the region and is approximately 1-3 business days. The purchased
-          goods are insured for 100% of their value. The delivery cost is
-          covered by the Buyer.
-        </AccordionContent>
-      </AccordionItem>
-      <AccordionItem value="item-4">
-        <AccordionTrigger>
-          <p className="flex items-center gap-1">
-            <History size={20} className="text-muted-foreground" />
-            Return Policy
-          </p>
-        </AccordionTrigger>
-        <AccordionContent className="text-muted-foreground">
-          In accordance with the Law of Ukraine &quot;On Consumer
-          Protection&quot;, within 14 days from the date of purchase, goods of
-          proper quality that the buyer is dissatisfied with for any reason can
-          be returned. For more details, please refer to the following{" "}
-          <Link
-            href="https://dpss.gov.ua/chasti-zapitannya-ta-vidpovidi"
-            className="text-blue-500 font-semibold hover:underline"
-            target="_blank"
-          >
-            link
-          </Link>
+          Доставку продукції здійснюють транспортні компанії: «Нова Пошта»,
+          «Делівері» та «Інтайм». На вибір клієнта товар доставляється
+          компанією, яка є для нього найбільш зручною. Також є можливість
+          самостійного вивезення продукції зі складу виробника за попередньою
+          домовленістю. Відвантаження продукції здійснюється після повної оплати
+          на розрахунковий рахунок виробника. У разі зарахування коштів після
+          13:00 товар відправляється наступного робочого дня. Термін доставки
+          залежить від регіону й становить орієнтовно 1–7 робочих днів. Вартість
+          доставки оплачується покупцем.
         </AccordionContent>
       </AccordionItem>
     </Accordion>

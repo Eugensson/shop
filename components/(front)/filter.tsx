@@ -179,7 +179,7 @@ export const Filter = ({
       <SearchBox />
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="categories">
-          <AccordionTrigger>Categories</AccordionTrigger>
+          <AccordionTrigger>Категорії</AccordionTrigger>
           <AccordionContent>
             <ScrollArea className="h-28 w-full rounded-none p-1 space-y-2">
               {categories.map((c) => (
@@ -196,9 +196,9 @@ export const Filter = ({
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="brands">
-          <AccordionTrigger>Brands</AccordionTrigger>
+          <AccordionTrigger>Виробники</AccordionTrigger>
           <AccordionContent>
-            <ScrollArea className="h-28 w-full rounded-none p-1 space-y-2">
+            <ScrollArea className="h-10 w-full rounded-none p-1 space-y-2">
               {brands.map((b) => (
                 <CheckboxItem
                   key={b}
@@ -211,7 +211,7 @@ export const Filter = ({
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="price">
-          <AccordionTrigger>Price</AccordionTrigger>
+          <AccordionTrigger>Ціна</AccordionTrigger>
           <AccordionContent>
             <ScrollArea className="h-28 rounded-none p-1">
               <div className="flex items-center gap-4">
@@ -247,7 +247,7 @@ export const Filter = ({
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="ratings">
-          <AccordionTrigger>Customers Review</AccordionTrigger>
+          <AccordionTrigger>Відгуки клієнтів</AccordionTrigger>
           <AccordionContent>
             <ScrollArea className="h-[160px] w-full rounded-none p-1">
               <ul>
@@ -257,7 +257,7 @@ export const Filter = ({
                     variant="link"
                     className="p-0 h-fit text-muted-foreground hover:text-primary"
                   >
-                    All
+                    Усі
                   </Button>
                 </li>
                 {RATINGS.map((r) => (
@@ -268,7 +268,9 @@ export const Filter = ({
                       className="p-0 h-fit"
                     >
                       <Rating
-                        caption={`${r} ${r === 1 ? "star" : "stars"}`}
+                        caption={`${r} ${
+                          r === 1 ? "зірка" : r === 5 ? "зірок" : "зірки"
+                        }`}
                         value={r}
                       />
                     </Button>

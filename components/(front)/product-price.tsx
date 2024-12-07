@@ -12,7 +12,7 @@ export const ProductPrice = ({ value, className }: ProductPriceProps) => {
     : [stringValue, ""];
   return (
     <p className={cn("text-2xl", className)}>
-      <span className="text-xs align-super">$</span>
+      <span className="text-sm align-super">&#8372;</span>
       {intValue}
       <span className="text-xs align-super">{floatValue}</span>
     </p>

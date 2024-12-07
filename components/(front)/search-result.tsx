@@ -31,7 +31,7 @@ export const SerchResults = ({
     <div className="flex flex-col gap-1">
       <div className="flex items-center gap-1">
         <Badge variant="outline" className="w-fit">
-          <span className="mr-1">Total results:</span>
+          <span className="mr-1">Результат пошуку:</span>
           {countProducts ? countProducts : "0"}
         </Badge>
         {(q !== "all" && q !== "") ||
@@ -40,36 +40,37 @@ export const SerchResults = ({
         rating !== "all" ||
         price !== "all" ? (
           <Button size="sm" variant="link" className="w-fit">
-            <Link href="/catalog">Clear</Link>
+            <Link href="/catalog">Очистити</Link>
           </Button>
         ) : null}
       </div>
       {q.trim() && q !== "all" && (
         <Badge variant="outline" className="w-fit capitalize">
-          <span className="text-muted-foreground mr-1">search:</span>
+          <span className="text-muted-foreground mr-1">пошук:</span>
           {q}
         </Badge>
       )}
       {category && category !== "all" && (
         <Badge variant="outline" className="w-fit capitalize">
-          <span className="text-muted-foreground mr-1">category:</span>
+          <span className="text-muted-foreground mr-1">категорії:</span>
           {category.split(",").join(", ")}
         </Badge>
       )}
       {brand && brand !== "all" && (
         <Badge variant="outline" className="w-fit capitalize">
-          <span className="text-muted-foreground mr-1">brand:</span>
+          <span className="text-muted-foreground mr-1">виробники:</span>
           {brand.split(",").join(", ")}
         </Badge>
       )}
       {price && price !== "all" && (
         <Badge variant="outline" className="w-fit capitalize">
-          <span className="text-muted-foreground mr-1">price:</span>${price}
+          <span className="text-muted-foreground mr-1">ціна:</span>&#8372;
+          {price}
         </Badge>
       )}
       {rating && rating !== "all" && (
         <Badge variant="outline" className="w-fit capitalize">
-          <span className="text-muted-foreground mr-1">rating:</span>
+          <span className="text-muted-foreground mr-1">рейтинг:</span>
           {rating} {Number(rating) === 1 ? "star" : "stars"}
         </Badge>
       )}

@@ -41,10 +41,10 @@ export const ProductCard = async ({ product }: { product: Product }) => {
             </Badge>
           )}
           <Badge
-            className="absolute top-0 left-0 p-1 text-sm opacity-80 rounded-none uppercase"
+            className="absolute top-0 left-0 p-1 text-sm opacity-80 rounded-none capitalize"
             variant="secondary"
           >
-            sku: {product.sku}
+            Артикул: {product.sku}
           </Badge>
           <AddToFavoriteBtn productId={product._id?.toString() || ""} />
         </figure>
@@ -60,20 +60,32 @@ export const ProductCard = async ({ product }: { product: Product }) => {
         </CardTitle>
         <CardDescription className="flex flex-col gap-2">
           <div className="flex items-center">
-            <span className="flex-1">Brand:</span>
+            <span className="flex-1">Виробник:</span>
             <p className="truncate flex-1 capitalize">{product.brand}</p>
           </div>
           <div className="flex items-center">
-            <span className="flex-1">Category:</span>
+            <span className="flex-1">Категорія:</span>
             <p className="truncate line-clamp-1 flex-1 capitalize">
-              {product.category}
+              {product.category === "domes"
+                ? "Куполи церковні"
+                : product.category === "cross"
+                ? "Хрести накупольні"
+                : product.category === "decor"
+                ? "Декоративні елементи"
+                : "Аркуші з покриттям"}
             </p>
           </div>
         </CardDescription>
       </CardHeader>
       <CardFooter className="pb-4 justify-between items-center">
         <Rating value={Number(product.rating)} />
-        <ProductPrice value={product.price} />
+        {product.price !== 0 ? (
+          <ProductPrice value={product.price} />
+        ) : (
+          <Badge variant="outline" className="text-sm">
+            Ціну уточнюйте
+          </Badge>
+        )}
       </CardFooter>
     </Card>
   );

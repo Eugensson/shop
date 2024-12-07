@@ -221,3 +221,24 @@ export const getFavoriteProductsByUserId = cache(
     }
   }
 );
+
+export const getImagesByCategory = cache(async (category: string) => {
+  try {
+    await dbConnect();
+
+    const products = await ProductModel.find({ category }).select(
+      "images -_id"
+    );
+
+    if (!products || products.length === 0) {
+      throw new Error("Images not found");
+    }
+
+    const images = products.flatMap((product) => product.images);
+
+    return images;
+  } catch (error) {
+    console.error("Error fetching images by category:", error);
+    throw new Error("Unable to fetch images");
+  }
+});

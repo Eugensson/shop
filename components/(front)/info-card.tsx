@@ -13,16 +13,22 @@ import { Button } from "@/components/ui/button";
 export const InfoCard = ({ category }: { category: string }) => {
   return (
     <Card className="w-fit h-fit grid grid-cols-2 overflow-hidden rounded-xl">
-      <div className="flex flex-col justify-between bg-gray-200">
+      <div className="flex flex-col justify-between">
         <CardHeader>
-          <CardTitle className="text-4xl my-24 font-semibold uppercase line-clamp-3">
-            {category}
+          <CardTitle className="text-4xl mt-20 font-semibold uppercase line-clamp-3">
+            {category === "domes"
+              ? "Куполи церковні"
+              : category === "cross"
+              ? "Хрести накупольні"
+              : category === "decor"
+              ? "Декоративні елементи"
+              : "Аркуші з покриттям"}
           </CardTitle>
         </CardHeader>
 
         <CardFooter className="pl-0">
           <Button variant="link" size="lg" asChild>
-            <Link href={`/gallery/${category}`}>View photo...</Link>
+            <Link href={`/gallery/${category}`}>Переглянути світлини...</Link>
           </Button>
         </CardFooter>
       </div>

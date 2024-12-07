@@ -1,6 +1,6 @@
 import { GalleryImages } from "@/components/(front)/gallery-images";
 
-import { getFramesByCategory } from "@/lib/services/frames-services";
+import { getImagesByCategory } from "@/lib/services/product-service";
 
 export const generateMetadata = async ({
   params,
@@ -9,7 +9,7 @@ export const generateMetadata = async ({
 }) => {
   const category = (await params).category;
   try {
-    const frames = await getFramesByCategory(category);
+    const frames = await getImagesByCategory(category);
 
     if (!frames) {
       return { title: "Зображення не знайдені" };
@@ -31,11 +31,11 @@ const Category = async ({
 }) => {
   const category = (await params).category;
 
-  const frames = await getFramesByCategory(category);
+  const images = await getImagesByCategory(category);
 
   return (
     <section className="container py-10 h-[80vh]">
-      <GalleryImages frames={frames} />
+      <GalleryImages images={images} />
     </section>
   );
 };

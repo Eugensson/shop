@@ -15,9 +15,19 @@ export const CheckboxItem = ({
       <Checkbox id={value} onCheckedChange={onChange} checked={checked} />
       <Label
         htmlFor="terms"
-        className="capitalize line-clamp-1 truncate text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+        className="line-clamp-1 truncate text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
       >
-        {value}
+        {value === "domes" ? (
+          "Куполи церковні"
+        ) : value === "cross" ? (
+          "Хрести накупольні"
+        ) : value === "decor" ? (
+          "Декоративні елементи"
+        ) : value === "sheets" ? (
+          "Аркуші з покриттям"
+        ) : (
+          <span className="capitalize">{value}</span>
+        )}
       </Label>
     </div>
   );
