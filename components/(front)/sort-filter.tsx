@@ -51,7 +51,7 @@ export const SortFilter = ({
                 : s === "lowest"
                 ? "Ціною (зростанням)"
                 : s === "highest"
-                ? "Price (зниженням"
+                ? "Ціною (зниженням)"
                 : s === "toprated"
                 ? "Популярнішими"
                 : s}
