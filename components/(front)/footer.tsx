@@ -3,7 +3,7 @@ import { Social } from "@/components/(front)/social";
 
 export const Footer = () => {
   return (
-    <footer className="bg-footer">
+    <footer className="bg-neutral-950">
       <div className="container flex flex-col justify-center items-center gap-4 pt-4 pb-1">
         <Nav footer />
         <Social />

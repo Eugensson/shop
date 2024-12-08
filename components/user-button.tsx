@@ -41,7 +41,10 @@ export const UserButton = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="cursor-pointer outline-none">
-        <User className="text-white" />
+        <User
+          className="text-white"
+          aria-label="Кнопка логування користувача"
+        />
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end">
         {session?.user ? (

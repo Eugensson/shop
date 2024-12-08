@@ -24,9 +24,6 @@ export default {
       secondary: "var(--font-lora)",
     },
     extend: {
-      backgroundImage: {
-        footer: "url('/bg-footer.jpg')",
-      },
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

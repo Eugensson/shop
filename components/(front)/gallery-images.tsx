@@ -42,7 +42,8 @@ export const GalleryImages = ({ images, className }: GalleryImagesProps) => {
                 ? images[current].trim()
                 : "/placeholder.png"
             }
-            alt="Product image"
+            alt="Світлина продукції"
+            aria-label="Світлина продукції"
             width={1000}
             height={1000}
             className="mx-auto w-auto h-[400px] object-cover object-center aspect-square hover:cursor-zoom-in"
@@ -54,6 +55,8 @@ export const GalleryImages = ({ images, className }: GalleryImagesProps) => {
           {images.map((image, index) => (
             <li
               key={index}
+              role="option"
+              aria-selected={current === index}
               className={cn(
                 "group relative border-2 mr-2 cursor-pointer hover:border-primary",
                 current === index && "border-primary"
@@ -64,8 +67,7 @@ export const GalleryImages = ({ images, className }: GalleryImagesProps) => {
                 src={image.trim() ? image.trim() : "/placeholder.png"}
                 width={75}
                 height={75}
-                alt="Product image"
-                aria-selected={current === index}
+                alt="Світлина продукції"
                 className="object-cover object-center aspect-square"
               />
               <div

@@ -19,7 +19,7 @@ export const FavoriteInfo = () => {
 
   return (
     <div className="relative cursor-pointer">
-      <Heart className="text-white" />
+      <Heart className="text-white" zria-label="Обрані товари" />
       {favoriteCount !== 0 && (
         <Badge
           aria-label={`You have ${favoriteCount} favorite items`}
