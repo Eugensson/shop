@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const Technology = () => {
   return (
-    <section className="container py-2 grid space-y-5">
+    <section className="container py-10 grid space-y-5">
       <Card className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-[1fr_500px] gap-10 overflow-hidden">
         <CardHeader>
           <CardTitle className="text-2xl font-semibold text-center mb-5">
@@ -184,6 +184,68 @@ const Technology = () => {
             />
           </article>
         </CardContent>
+      </Card>
+      <Card className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-[500px_1fr] overflow-hidden">
+        <CardContent className="p-0">
+          <article>
+            <Image
+              src="/tech_4.jpg"
+              alt="Photo of sertificate"
+              width={600}
+              height={600}
+              className="object-cover aspect-square"
+            />
+          </article>
+        </CardContent>
+        <CardHeader className="pt-1">
+          <CardTitle className="text-2xl font-semibold text-center">
+            Гарантія якості
+          </CardTitle>
+          <CardDescription className="text-base space-y-3 text-primary">
+            <p className="mb-6">
+              Ми гарантуємо надійність наших виробів протягом 50 років. Уся
+              продукція відповідає стандарту ТУ У 25.6-37651685-001:2012
+              &quot;Покриття металеві іонно-плазмові&quot; та підтверджена
+              сертифікатом якості. Програма гарантії якості розроблена з
+              урахуванням вимог ринку та включає:
+            </p>
+            <ol className="text-base space-y-4 text-primary">
+              <li>
+                <span className="mr-2">1.</span>
+                Сертифікат відповідності (якості) UA 1.012.0006075;
+              </li>
+              <li>
+                <span className="mr-2">2.</span>
+                Сертифікат відповідності (якості) UA 1.012.0017193;
+              </li>
+              <li>
+                <span className="mr-2">3.</span>
+                TУУ 25.6-37651685-001:2012 Покриття металеві іонно-плазмові.
+                Технічні умови;
+              </li>
+              <li>
+                <span className="mr-2">4.</span>
+                ГОСТ 9.908-85 Методи визначення показників корозії та корозійної
+                стійкості;
+              </li>
+              <li>
+                <span className="mr-2">5.</span>
+                ГОСТ 9.308-85 Єдина система захисту від корозії та старіння.
+                Покриття металеві та неметалеві неорганічні;
+              </li>
+              <li>
+                <span className="mr-2">6.</span>
+                ОСТ 92-1346-83 Метали, сплави, покриття металеві та неметалеві
+                неорганічні;
+              </li>
+              <li>
+                <span className="mr-2">7.</span>
+                ГОСТ 19282-73 Сталь низьколегована товстолистова та
+                широкосмугова універсальна. Технічні умови;
+              </li>
+            </ol>
+          </CardDescription>
+        </CardHeader>
       </Card>
     </section>
   );
