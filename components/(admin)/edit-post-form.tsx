@@ -83,15 +83,15 @@ export const EditPostForm = ({ postId }: { postId: string }) => {
 
       const files = e.target.files;
 
-      if (files.length + newImages.length > 5) {
+      if (files.length + newImages.length > 20) {
         toast({
-          title: "You can upload a maximum of 10 images",
+          title: "You can upload a maximum of 20 images",
           variant: "destructive",
         });
         return;
       }
 
-      for (let i = 0; i < files.length; i++) {
+      for (let i = 0; i < files.length; i += 1) {
         const file = files[i];
         const formData = new FormData();
         formData.append("file", file);
@@ -189,13 +189,13 @@ export const EditPostForm = ({ postId }: { postId: string }) => {
         <form onSubmit={handleSubmit(formSubmit)} className="space-y-4">
           <FormInput name="Title" id="title" required />
           <div className="space-y-2">
-            <Label htmlFor="images">Selected Images</Label>
-            <div className="flex gap-2">
+            <Label htmlFor="images">Виберіть зображення</Label>
+            <div className="flex flex-wrap gap-2">
               {getValues("images")?.map((imageUrl: string, index: number) => (
                 <div key={index} className="relative">
                   <Image
-                    width={50}
-                    height={50}
+                    width={40}
+                    height={40}
                     src={imageUrl}
                     alt={`image-${index}`}
                     className="object-cover aspect-square"

@@ -12,7 +12,7 @@ export const NewsList = ({ posts, countPosts }: NewsListProps) => {
   return (
     <section className="flex flex-col gap-5">
       <Badge variant="secondary" className="w-fit px-4 py-2 ml-auto">
-        Count of news: {countPosts}
+        Новин: {countPosts}
       </Badge>
       <ul className="grid grid-cols-1 xl:grid-cols-2 gap-5">
         {posts.map((post) => (

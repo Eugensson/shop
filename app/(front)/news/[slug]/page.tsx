@@ -1,6 +1,14 @@
+import Link from "next/link";
+import Image from "next/image";
 import { notFound } from "next/navigation";
+import Zoom from "react-medium-image-zoom";
+
+import "react-medium-image-zoom/dist/styles.css";
+
+import { Button } from "@/components/ui/button";
 
 import { convertDocToObj } from "@/lib/utils";
+
 import { getPostBySlug } from "@/lib/services/post-service";
 
 export const generateMetadata = async ({
@@ -41,8 +49,33 @@ const NewsDetails = async ({
     const serilizePost = convertDocToObj(post);
 
     return (
-      <section className="container py-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
-        <pre>{JSON.stringify(serilizePost, null, 2)}</pre>
+      <section className="container max-w-4xl py-10">
+        <Button variant="link" asChild>
+          <Link href="/news">Повернутися до розділу новин</Link>
+        </Button>
+        <h2 className="text-4xl font-semibold max-w-[700px] mb-10">
+          {serilizePost.title}
+        </h2>
+        <p className="mb-10 text-muted-foreground">
+          {new Date(serilizePost.createdAt).toLocaleString()}
+        </p>
+        <p className="mb-10 text-lg">{serilizePost.description}</p>
+
+        <ul className="grid grid-cols-5 gap-1">
+          {serilizePost.images.map((imageUrl: string) => (
+            <li key={imageUrl}>
+              <Zoom classDialog="custom-zoom">
+                <Image
+                  src={imageUrl}
+                  alt={serilizePost.title}
+                  width={400}
+                  height={400}
+                  className="object-cover aspect-square"
+                />
+              </Zoom>
+            </li>
+          ))}
+        </ul>
       </section>
     );
   } catch (error) {

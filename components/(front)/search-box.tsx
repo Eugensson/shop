@@ -15,7 +15,7 @@ export const SearchBox = () => {
     <form action="/catalog" method="GET" className="relative h-12">
       <Input
         className="w-full h-full pr-10"
-        placeholder="Search products..."
+        placeholder="Пошук товарів..."
         name="q"
         defaultValue={q === "all" ? "" : q}
       />

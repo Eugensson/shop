@@ -17,21 +17,21 @@ export const NewsCard = ({ post }: { post: Post }) => {
   return (
     <Card className="w-fit h-fit grid grid-cols-2 gap-5 overflow-hidden rounded-xl">
       <div className="flex flex-col justify-between">
-        <CardHeader>
-          <CardDescription className="mb-10">
+        <CardHeader className="flex flex-col gap-5">
+          <CardDescription>
             {new Date(post.createdAt).toLocaleString()}
           </CardDescription>
-          <CardTitle className="text-xl font-semibold uppercase line-clamp-3">
+          <CardTitle className="text-lg font-semibold uppercase line-clamp-4">
             {post.title}
           </CardTitle>
-          <CardDescription className="line-clamp-5 max-w-80">
+          <CardDescription className="line-clamp-3 max-w-80">
             {post.description}
           </CardDescription>
         </CardHeader>
 
         <CardFooter className="pl-0">
           <Button variant="link" size="lg" asChild>
-            <Link href={`/news/${post.slug}`}>Read more...</Link>
+            <Link href={`/news/${post.slug}`}>Переглянути новину</Link>
           </Button>
         </CardFooter>
       </div>

@@ -247,7 +247,7 @@ export const Filter = ({
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="ratings">
-          <AccordionTrigger>Відгуки клієнтів</AccordionTrigger>
+          <AccordionTrigger>Рейтинг</AccordionTrigger>
           <AccordionContent>
             <ScrollArea className="h-[160px] w-full rounded-none p-1">
               <ul>

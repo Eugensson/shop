@@ -130,7 +130,7 @@ export const columns: ColumnDef<PostRow>[] = [
     },
     cell: ({ row }) => {
       const title = row.getValue("title") as string;
-      return <p className="ml-4 truncate">{title}</p>;
+      return <p className="max-w-60 line-clamp-2 ml-4">{title}</p>;
     },
   },
   {

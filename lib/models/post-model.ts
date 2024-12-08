@@ -11,9 +11,9 @@ const postSchema = new Schema(
       required: true,
       validate: {
         validator: function (v: string[]) {
-          return v.length > 0 && v.length <= 10;
+          return v.length > 0 && v.length <= 20;
         },
-        message: "Images must be between 1 and 10",
+        message: "Images must be between 1 and 20",
       },
     },
   },
