@@ -242,3 +242,26 @@ export const getImagesByCategory = cache(async (category: string) => {
     throw new Error("Unable to fetch images");
   }
 });
+
+export const getFeaturedProducts = cache(async () => {
+  try {
+    await dbConnect();
+
+    const products = await ProductModel.find({ isFeatured: true })
+      .sort({ createdAt: -1 })
+      .limit(10)
+      .lean();
+
+    if (!products.length) {
+      throw new Error("No featured products found");
+    }
+
+    return products;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  } catch (error: any) {
+    console.error("Error fetching featured products:", error.message);
+    throw new Error(
+      "Failed to retrieve featured products. Please try again later."
+    );
+  }
+});

@@ -4,6 +4,7 @@ import { Hero } from "@/components/(front)/hero";
 import { History } from "@/components/(front)/history";
 import Preference from "@/components/(front)/preference";
 import { Portfolio } from "@/components/(front)/portfolio";
+import { FeatureProductList } from "@/components/(front)/feature-product-list";
 
 export const metadata: Metadata = {
   title: "Головна",
@@ -16,7 +17,7 @@ const Home = async () => {
       <History />
       <Preference />
       <Portfolio />
-      <div className="min-h-[60vh]" />
+      <FeatureProductList />
     </section>
   );
 };
