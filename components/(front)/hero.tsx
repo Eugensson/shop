@@ -5,8 +5,8 @@ import Image from "next/image";
 import { ElementRef, useEffect, useRef } from "react";
 import { useScroll, useTransform, motion } from "framer-motion";
 
-import Background1 from "@/public/banner_3.jpg";
-import Background2 from "@/public/banner_5.jpg";
+import Background1 from "@/public/hero_1.jpg";
+import Background2 from "@/public/hero_2.jpg";
 
 const Up = () => {
   const container = useRef<ElementRef<"div">>(null);
