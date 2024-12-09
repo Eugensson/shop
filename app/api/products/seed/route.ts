@@ -19,13 +19,13 @@ export const GET = async () => {
 
     const { users, products, frames } = sampleData;
 
-    await UserModel.deleteMany();
+    // await UserModel.deleteMany();
     await UserModel.insertMany(users);
 
-    await ProductModel.deleteMany();
+    // await ProductModel.deleteMany();
     await ProductModel.insertMany(products);
 
-    await FrameModel.deleteMany();
+    // await FrameModel.deleteMany();
     await FrameModel.insertMany(frames);
 
     return NextResponse.json({
