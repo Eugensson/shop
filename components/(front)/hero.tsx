@@ -85,7 +85,7 @@ export const Hero = () => {
     <section>
       <Up />
       <div className="flex justify-center my-40">
-        <p className="text-[7.5vw] uppercase text-center max-w-[80vw] leading-none">
+        <p className="text-[7.5vw] uppercase text-center max-w-[80vw] bg-gradient-to-r from-blue-500 via-yellow-500 to-indigo-500 bg-[length:200%] bg-clip-text text-transparent leading-none animate-gradient animate-gradient-animation">
           Захист, що витримує стихії. Стиль, що вражає.
         </p>
       </div>
