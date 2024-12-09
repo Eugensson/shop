@@ -13,9 +13,9 @@ import {
 
 const Preference = () => {
   return (
-    <section className="bg-neutral-950 py-20">
-      <div className="container grid grid-cols-2 lg:grid-cols-4 gap-10">
-        <Card className="bg-inherit border-0 hover:shadow-md hover:shadow-neutral-700">
+    <section className="bg-neutral-950/90 py-20">
+      <div className="container max-w-7xl grid grid-cols-2 lg:grid-cols-4 gap-10">
+        <Card className="bg-neutral-950 border-0 hover:shadow-md hover:shadow-neutral-700">
           <CardHeader>
             <CardTitle className="mx-auto mb-2">
               <CloudSunRain size={40} className="text-yellow-500" />
