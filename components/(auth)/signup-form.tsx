@@ -1,10 +1,5 @@
 "use client";
 
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import { useToast } from "@/hooks/use-toast";
-import { useSession } from "next-auth/react";
-import { SubmitHandler, useForm } from "react-hook-form";
 import {
   AtSign,
   Eye,
@@ -14,6 +9,11 @@ import {
   LockKeyhole,
   User,
 } from "lucide-react";
+import Link from "next/link";
+import { useEffect, useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { useSession } from "next-auth/react";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { useRouter, useSearchParams } from "next/navigation";
 
 import {
@@ -230,7 +230,7 @@ export const SignUpForm = () => {
             <div className="relative">
               <Input
                 id="confirmPassword"
-                type="password"
+                type={isVisiblePassword ? "text" : "password"}
                 autoComplete="off"
                 placeholder="******"
                 className="pl-10"
