@@ -20,14 +20,12 @@ import { AddToFavoriteBtn } from "@/components/(front)/add-to-favorite-btn";
 
 import { fetcher } from "@/lib/utils";
 import { Product } from "@/lib/models/product-model";
-import { useHasMounted } from "@/hooks/use-has-mounted";
 import { useFavoriteService } from "@/hooks/use-favorite-service";
 
 export const FavotiteProductList = () => {
-  const hasMounted = useHasMounted();
   const { favorites } = useFavoriteService();
 
-  const { data, isLoading } = useSWR(
+  const { data, isLoading, error } = useSWR(
     favorites.length > 0 ? `/api/products?ids=${favorites.join(",")}` : null,
     fetcher
   );
@@ -40,7 +38,9 @@ export const FavotiteProductList = () => {
     return <Loader className="animate-spin" />;
   }
 
-  if (!hasMounted) return <></>;
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
 
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
