@@ -46,7 +46,7 @@ export const ProductCard = async ({ product }: { product: Product }) => {
           >
             Артикул: {product.sku}
           </Badge>
-          <AddToFavoriteBtn productId={product._id?.toString() || ""} />
+          <AddToFavoriteBtn product={product || {}} />
         </figure>
       </CardContent>
       <CardHeader>

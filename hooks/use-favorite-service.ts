@@ -1,25 +1,29 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+import { Product } from "@/lib/models/product-model";
+
 type FavoriteState = {
-  favorites: string[];
-  addToFavorites: (productId: string) => void;
-  removeFromFavorites: (productId: string) => void;
+  favorites: Product[];
+  addToFavorites: (product: Product) => void;
+  removeFromFavorites: (product: Product) => void;
 };
 
 export const favoriteStore = create<FavoriteState>()(
   persist(
     (set, get) => ({
       favorites: [],
-      addToFavorites: (productId: string) => {
+      addToFavorites: (product: Product) => {
         const currentFavorites = get().favorites;
-        if (!currentFavorites.includes(productId)) {
-          set({ favorites: [...currentFavorites, productId] });
+        if (!currentFavorites.some((fav) => fav._id === product._id)) {
+          set({ favorites: [...currentFavorites, product] });
         }
       },
-      removeFromFavorites: (productId: string) => {
+      removeFromFavorites: (product: Product) => {
         const currentFavorites = get().favorites;
-        set({ favorites: currentFavorites.filter((x) => x !== productId) });
+        set({
+          favorites: currentFavorites.filter((fav) => fav._id !== product._id),
+        });
       },
     }),
     {
@@ -34,9 +38,9 @@ export const useFavoriteService = () => {
 
   return {
     favorites,
-    addToFavorites: (productId: string) =>
-      favoriteStore.getState().addToFavorites(productId),
-    removeFromFavorites: (productId: string) =>
-      favoriteStore.getState().removeFromFavorites(productId),
+    addToFavorites: (product: Product) =>
+      favoriteStore.getState().addToFavorites(product),
+    removeFromFavorites: (product: Product) =>
+      favoriteStore.getState().removeFromFavorites(product),
   };
 };

@@ -1,9 +1,7 @@
 "use client";
 
-import useSWR from "swr";
 import Link from "next/link";
 import Image from "next/image";
-import { Loader } from "lucide-react";
 
 import {
   Card,
@@ -18,36 +16,17 @@ import { Rating } from "@/components/(front)/rating";
 import { ProductPrice } from "@/components/(front)/product-price";
 import { AddToFavoriteBtn } from "@/components/(front)/add-to-favorite-btn";
 
-import { fetcher } from "@/lib/utils";
 import { Product } from "@/lib/models/product-model";
 import { useFavoriteService } from "@/hooks/use-favorite-service";
 
 export const FavotiteProductList = () => {
   const { favorites } = useFavoriteService();
 
-  const { data, isLoading, error } = useSWR(
-    favorites.length > 0 ? `/api/products?ids=${favorites.join(",")}` : null,
-    fetcher
-  );
-
-  if (favorites.length === 0) {
-    return <p>Список порожній</p>;
-  }
-
-  if (isLoading) {
-    return <Loader className="animate-spin" />;
-  }
-
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
-
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-      {data && data.length > 0 ? (
-        data.map((product: Product) => {
+      {favorites && favorites.length > 0 ? (
+        favorites.map((product: Product) => {
           const imageUrl = product.thumbnail || "/placeholder.png";
-
           return (
             <li key={product._id?.toString()}>
               <Card className="h-fit overflow-hidden">
@@ -80,9 +59,7 @@ export const FavotiteProductList = () => {
                     >
                       Артикул: {product.sku}
                     </Badge>
-                    <AddToFavoriteBtn
-                      productId={product._id?.toString() || ""}
-                    />
+                    <AddToFavoriteBtn product={product || {}} />
                   </figure>
                 </CardContent>
                 <CardHeader>
@@ -130,7 +107,9 @@ export const FavotiteProductList = () => {
           );
         })
       ) : (
-        <p className="">Список порожній</p>
+        <li className="col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-4">
+          Список порожній
+        </li>
       )}
     </ul>
   );
