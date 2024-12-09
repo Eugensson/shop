@@ -26,6 +26,7 @@ import { Button } from "@/components/ui/button";
 import { formatId } from "@/lib/utils";
 
 import { useToast } from "@/hooks/use-toast";
+import { Badge } from "@/components/ui/badge";
 
 export type ProductRow = {
   id: string;
@@ -42,7 +43,7 @@ const UserActions = ({ userId }: { userId: string }) => {
     `/api/admin/users`,
     async (url, { arg }: { arg: { userId: string } }) => {
       const toastId = toast({
-        title: "Deleting user...",
+        title: "Видалення користувача...",
       });
 
       try {
@@ -55,7 +56,7 @@ const UserActions = ({ userId }: { userId: string }) => {
         const data = await res.json();
         if (res.ok) {
           toast({
-            title: "User deleted successfully",
+            title: "Користувача видалено",
             description: `${toastId}`,
           });
           router.refresh();
@@ -69,7 +70,7 @@ const UserActions = ({ userId }: { userId: string }) => {
       } catch {
         toast({
           title: "Error",
-          description: "Something went wrong",
+          description: "Щось пішло не так. Будь ласка, спробуйте ще раз.",
           variant: "destructive",
         });
       }
@@ -80,18 +81,18 @@ const UserActions = ({ userId }: { userId: string }) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="h-8 w-8 p-0">
-          <span className="sr-only">Open menu</span>
+          <span className="sr-only">Відкрити меню</span>
           <MoreVertical className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+        <DropdownMenuLabel>Дії</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <Button variant="link" size="sm" asChild>
             <Link href={`/users/${userId}`} className="flex items-center gap-2">
               <PencilIcon className="size-4 text-emerald-500" />
-              Edit User
+              Редагувати
             </Link>
           </Button>
         </DropdownMenuItem>
@@ -104,7 +105,7 @@ const UserActions = ({ userId }: { userId: string }) => {
             onClick={() => deleteUser({ userId })}
           >
             <TrashIcon className="size-4 text-red-500" />
-            Delete User
+            Видалити
           </Button>
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -121,7 +122,7 @@ export const columns: ColumnDef<ProductRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          User Id
+          Id користувача
           <ArrowUp01 className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -140,7 +141,7 @@ export const columns: ColumnDef<ProductRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Name
+          Ім&apos;я користувача
           <ArrowUpAZ className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -159,7 +160,7 @@ export const columns: ColumnDef<ProductRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Email
+          Елетронна пошта
           <ArrowUpAZ className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -178,7 +179,7 @@ export const columns: ColumnDef<ProductRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          User Role
+          Роль
           <ArrowUpNarrowWide className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -186,7 +187,14 @@ export const columns: ColumnDef<ProductRow>[] = [
     cell: ({ row }) => {
       const isAdmin = row.getValue("isAdmin") as string;
 
-      return <p className="col-span-2 ml-4">{isAdmin ? "Admin" : "User"}</p>;
+      return (
+        <Badge
+          variant={isAdmin ? "destructive" : "default"}
+          className="col-span-2 ml-4"
+        >
+          {isAdmin ? "Адміністратор" : "Відвідувач"}
+        </Badge>
+      );
     },
   },
   {

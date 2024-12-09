@@ -8,9 +8,7 @@ export const config = {
   providers: [
     CredentialsProvider({
       credentials: {
-        email: {
-          type: "email",
-        },
+        email: { type: "email" },
         password: { type: "password" },
       },
 

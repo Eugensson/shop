@@ -59,7 +59,7 @@ const CartItem = ({ item, increase, decrease }: CartItemProps) => {
           <Plus />
         </Button>
       </div>
-      <p>${item.price}</p>
+      <p>&#8372;{item.price}</p>
     </div>
   );
 };
@@ -93,16 +93,16 @@ export const Cart = () => {
       </SheetTrigger>
       <SheetContent>
         <SheetHeader>
-          <SheetTitle>Shopping Cart</SheetTitle>
+          <SheetTitle>Кошик</SheetTitle>
         </SheetHeader>
         {items.length === 0 ? (
           <div className="h-full flex flex-col justify-center items-center gap-4 text-center">
             <span className="flex items-center gap-x-2 text-muted-foreground">
               <PackageOpen size={28} />
-              Your cart is empty.
+              Ваш кошик порожній.
             </span>
             <Button variant="link" asChild>
-              <Link href="/">Start shopping now</Link>
+              <Link href="/">Почніть робити покупки зараз</Link>
             </Button>
           </div>
         ) : (
@@ -120,13 +120,13 @@ export const Cart = () => {
             <div className="w-full flex flex-col gap-4">
               <Separator />
               <p>
-                Subtotal ({totalItems}) : ${itemsPrice}
+                Підсумок ({totalItems}) : &#8372;{itemsPrice}
               </p>
               <Button
                 onClick={() => router.push("/shipping")}
                 className="w-full"
               >
-                Place an Order
+                Оформити замовлення
               </Button>
             </div>
           </div>

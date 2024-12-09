@@ -5,8 +5,8 @@ import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Admin Dashboard",
-    absolute: "Admin Dashboard",
+    template: "%s | Адмінпанель",
+    absolute: "Адмінпанель",
   },
   description: "e-Commerce",
 };

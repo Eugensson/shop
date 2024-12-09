@@ -83,7 +83,7 @@ export function DataTable<TData, TValue>({
         <div className="flex items-center justify-between">
           <div className="relative w-full max-w-md">
             <Input
-              placeholder="Serch by name..."
+              placeholder="Пошук за ім'ям..."
               value={
                 (table.getColumn("name")?.getFilterValue() as string) ?? ""
               }
@@ -164,7 +164,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Результатів немає.
                 </TableCell>
               </TableRow>
             )}
@@ -183,7 +183,7 @@ export function DataTable<TData, TValue>({
           }}
           disabled={!table.getCanPreviousPage()}
         >
-          Previous
+          Попередня
         </Button>
         <Button
           variant="outline"
@@ -191,7 +191,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Next
+          Наступна
         </Button>
       </div>
     </div>

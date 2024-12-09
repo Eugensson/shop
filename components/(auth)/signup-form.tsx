@@ -70,7 +70,7 @@ export const SignUpForm = () => {
     const { name, email, password } = form;
 
     try {
-      const res = await fetch("/api/auth/register", {
+      const res = await fetch("/api/auth/sign-up", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -84,7 +84,7 @@ export const SignUpForm = () => {
 
       if (res.ok) {
         return router.push(
-          `/signin?callbackUrl=${callbackUrl}&success=Account has been created`
+          `/sign-in?callbackUrl=${callbackUrl}&success=Account has been created`
         );
       } else {
         const data = await res.json();
@@ -110,10 +110,10 @@ export const SignUpForm = () => {
       <CardHeader className="space-y-2">
         <CardTitle className="flex items-center justify-center gap-x-2 text-2xl font-semibold uppercase">
           <LockKeyhole size={24} />
-          Auth
+          Реєстрація
         </CardTitle>
         <CardDescription className="text-center">
-          Create an account
+          Створити аккаунт
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -126,7 +126,7 @@ export const SignUpForm = () => {
               {errors.name?.message ? (
                 <p className="text-destructive">{errors.name.message}</p>
               ) : (
-                <p>Name</p>
+                <p>Ім&apos;я користувача</p>
               )}
             </Label>
             <div className="relative">
@@ -137,7 +137,7 @@ export const SignUpForm = () => {
                 placeholder="Joe Doe"
                 className="pl-10"
                 {...register("name", {
-                  required: "Name is required",
+                  required: "Ім'я користувача - обов'язкове поле",
                 })}
               />
               <User
@@ -151,7 +151,7 @@ export const SignUpForm = () => {
               {errors.email?.message ? (
                 <p className="text-destructive">{errors.email.message}</p>
               ) : (
-                "Email"
+                "Електронна пошта"
               )}
             </Label>
             <div className="relative">
@@ -159,13 +159,13 @@ export const SignUpForm = () => {
                 id="email"
                 type="text"
                 autoComplete="off"
-                placeholder="joe.doe@example.com"
+                placeholder="example@mail.com"
                 className="pl-10"
                 {...register("email", {
-                  required: "Email is required",
+                  required: "Електронна пошта - обов'язкове поле",
                   pattern: {
                     value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                    message: "Email is invalid",
+                    message: "Не вірний формат електронної пошти",
                   },
                 })}
               />
@@ -180,7 +180,7 @@ export const SignUpForm = () => {
               {errors.password?.message ? (
                 <p className="text-destructive">{errors.password.message}</p>
               ) : (
-                "Password"
+                "Пароль"
               )}
             </Label>
             <div className="relative">
@@ -191,7 +191,7 @@ export const SignUpForm = () => {
                 type={isVisiblePassword ? "text" : "password"}
                 className="px-10"
                 {...register("password", {
-                  required: "Password is required",
+                  required: "Пароль - обов'язкове поле",
                 })}
               />
               <Key
@@ -224,7 +224,7 @@ export const SignUpForm = () => {
                   {errors.confirmPassword.message}
                 </p>
               ) : (
-                "Confirm Password"
+                "Підтвердження пароля"
               )}
             </Label>
             <div className="relative">
@@ -235,10 +235,10 @@ export const SignUpForm = () => {
                 placeholder="******"
                 className="pl-10"
                 {...register("confirmPassword", {
-                  required: "Confirm Password is required",
+                  required: "Обов'язкове до заповнення поле",
                   validate: (value) => {
                     const { password } = getValues();
-                    return password === value || "Passwords should match!";
+                    return password === value || "Паролі повинні співпадати!";
                   },
                 })}
               />
@@ -254,8 +254,8 @@ export const SignUpForm = () => {
             disabled={isSubmitting}
             className="w-full"
           >
-            {isSubmitting && <Loader className="animate-spin" />}Create an
-            account
+            {isSubmitting && <Loader className="animate-spin" />}Створити
+            аккаунт
           </Button>
         </form>
       </CardContent>
@@ -263,7 +263,7 @@ export const SignUpForm = () => {
         <SocialBtn />
         <Button variant="link" asChild>
           <Link className="link" href={`/sign-in?callbackUrl=${callbackUrl}`}>
-            Already have an account?
+            Маєте обліковий запис?
           </Link>
         </Button>
       </CardFooter>

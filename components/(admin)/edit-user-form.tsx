@@ -45,7 +45,7 @@ export const EditUserForm = ({ userId }: { userId: string }) => {
 
       if (!res.ok) toast({ title: data.message, variant: "destructive" });
 
-      toast({ title: "User updated successfully" });
+      toast({ title: "Дані користувача оновлено" });
 
       router.push("/users");
     }
@@ -98,7 +98,7 @@ export const EditUserForm = ({ userId }: { userId: string }) => {
         type="text"
         id={id}
         {...register(id, {
-          required: required && `* ${name} is required`,
+          required: required && `* ${name} - обов'язкове поле`,
           pattern,
         })}
         className="w-full"
@@ -111,20 +111,20 @@ export const EditUserForm = ({ userId }: { userId: string }) => {
       <CardHeader>
         <CardTitle className="mb-8 flex justify-center items-center gap-4">
           <UserPen />
-          Edit User
+          Редагування даних користувача
         </CardTitle>
         <CardDescription className="flex items-center justify-between gap-8 mb-8">
-          <span> UserID:</span>
+          <span>ID користувача:</span>
           <span>{formatId(userId)}</span>
         </CardDescription>
       </CardHeader>
       <CardContent>
         <form onSubmit={handleSubmit(formSubmit)} className="space-y-8">
-          <FormInput name="Name" id="name" required />
-          <FormInput name="Email" id="email" required />
+          <FormInput name="Ім'я" id="name" required />
+          <FormInput name="Електронна пошта" id="email" required />
 
           <Label className="flex items-center gap-3">
-            Admin
+            Адміністратор
             <Switch
               id="isAdmin"
               checked={!!watch("isAdmin")}
@@ -139,11 +139,11 @@ export const EditUserForm = ({ userId }: { userId: string }) => {
               className="flex-1"
             >
               <Ban />
-              Cancel
+              Відхилити
             </Button>
             <Button type="submit" disabled={isUpdating} className="flex-1">
               {isUpdating ? <Loader className="animate-spin" /> : <RefreshCw />}
-              Update
+              Оновити
             </Button>
           </div>
         </form>

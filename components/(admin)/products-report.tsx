@@ -36,10 +36,10 @@ interface ProductsReportProps {
 
 export const ProductsReport = ({ data }: ProductsReportProps) => {
   const productsData = {
-    labels: data.map((x: { _id: string }) => x._id), // 2022/01 2022/03
+    labels: data.map((x: { _id: string }) => x._id),
     datasets: [
       {
-        label: "Category",
+        label: "Категорія",
         data: data.map((x: { totalProducts: number }) => x.totalProducts),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
@@ -66,7 +66,7 @@ export const ProductsReport = ({ data }: ProductsReportProps) => {
       <CardHeader>
         <CardTitle className="text-primary flex items-center gap-x-2">
           <ChartNoAxesCombined size={24} />
-          Products Report
+          Звіт з товарів
         </CardTitle>
       </CardHeader>
       <CardContent>

@@ -39,7 +39,7 @@ export const columns: ColumnDef<OrderRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Order Id
+          Id замовлення
           <ArrowUp01 className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -57,7 +57,7 @@ export const columns: ColumnDef<OrderRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          User
+          Користувач
           <ArrowUpAZ className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -75,7 +75,7 @@ export const columns: ColumnDef<OrderRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Create order date
+          Дата оформлення
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -93,7 +93,7 @@ export const columns: ColumnDef<OrderRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Total price
+          Вартість замовлення
           <ArrowUp01 className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -116,7 +116,7 @@ export const columns: ColumnDef<OrderRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Payment status
+          Статус оплати
           <ArrowUpNarrowWide className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -134,7 +134,7 @@ export const columns: ColumnDef<OrderRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Delivery status
+          Статус доставки
           <ArrowUpNarrowWide className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -153,19 +153,19 @@ export const columns: ColumnDef<OrderRow>[] = [
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" type="button" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
+              <span className="sr-only">Відкрити меню</span>
               <MoreVertical className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuLabel>Дії</DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
               <Link
                 href={`/order/${orderId}`}
                 className="cursor-pointer hover:underline"
               >
-                Order Details
+                Детально
               </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>

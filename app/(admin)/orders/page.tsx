@@ -4,7 +4,7 @@ import { columns } from "@/app/(admin)/orders/columns";
 import { DataTable } from "@/app/(admin)/orders/data-table";
 
 export const metadata: Metadata = {
-  title: "Orders",
+  title: "Замовлення",
 };
 
 const Orders = () => {

@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Settings",
+  title: "Налаштування",
 };
 
 const Settings = () => {

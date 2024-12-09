@@ -58,11 +58,11 @@ export function DataTable<TData, TValue>({
         totalPrice: order.totalPrice,
         paid: order.isPaid
           ? `${order?.paidAt?.toString().substring(0, 10)}`
-          : "Not Paid",
+          : "Не оплачено",
         delivered: order.isDelivered
           ? `${order?.deliveredAt?.toString().substring(0, 10)}`
-          : "Not Delivered",
-        action: "View Details",
+          : "Не доставлено",
+        action: "Детально",
       })) || []
     );
   }, [rawData]);
@@ -89,7 +89,7 @@ export function DataTable<TData, TValue>({
         <div className="flex items-center justify-between gap-5">
           <div className="relative w-full max-w-60">
             <Input
-              placeholder="Search order by ID..."
+              placeholder="Пошук за Id..."
               value={(table.getColumn("id")?.getFilterValue() as string) ?? ""}
               onChange={(event) =>
                 table.getColumn("id")?.setFilterValue(event.target.value)
@@ -103,7 +103,7 @@ export function DataTable<TData, TValue>({
           </div>
           <div className="relative w-full max-w-60">
             <Input
-              placeholder="Search order by username..."
+              placeholder="Пошук за користувачем..."
               value={
                 (table.getColumn("user")?.getFilterValue() as string) ?? ""
               }
@@ -184,7 +184,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Результати відсутні.
                 </TableCell>
               </TableRow>
             )}
@@ -203,7 +203,7 @@ export function DataTable<TData, TValue>({
           }}
           disabled={!table.getCanPreviousPage()}
         >
-          Previous
+          Попередня
         </Button>
         <Button
           variant="outline"
@@ -211,7 +211,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Next
+          Наступна
         </Button>
       </div>
     </div>

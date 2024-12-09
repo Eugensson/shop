@@ -75,12 +75,12 @@ export function DataTable<TData, TValue>({
       }
 
       toast({
-        title: "Frame created successfully",
+        title: "Кадр створено",
       });
 
       if (!data.frame || !data.frame._id) {
         toast({
-          title: "Failed to create frame",
+          title: "Не вдалося створити кадр",
           variant: "destructive",
         });
         return;
@@ -98,7 +98,7 @@ export function DataTable<TData, TValue>({
         description: frame.description,
         category: frame.category,
         image: frame.image,
-        action: "Edit product",
+        action: "Редагувати кадр",
       })) || []
     );
   }, [rawData]);
@@ -134,11 +134,11 @@ export function DataTable<TData, TValue>({
               ) : (
                 <CirclePlus />
               )}
-              Create frame
+              Створити кадр
             </Button>
             <div className="relative w-full max-w-md">
               <Input
-                placeholder="Search frame by title..."
+                placeholder="Пошук за заголовком..."
                 value={
                   (table.getColumn("title")?.getFilterValue() as string) ?? ""
                 }
@@ -154,7 +154,7 @@ export function DataTable<TData, TValue>({
             </div>
             <div className="relative w-full max-w-md">
               <Input
-                placeholder="Search frame by description..."
+                placeholder="Пошук за описом..."
                 value={
                   (table
                     .getColumn("description")
@@ -240,7 +240,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Результати відсутні.
                 </TableCell>
               </TableRow>
             )}
@@ -259,7 +259,7 @@ export function DataTable<TData, TValue>({
           }}
           disabled={!table.getCanPreviousPage()}
         >
-          Previous
+          Попередня
         </Button>
         <Button
           variant="outline"
@@ -267,7 +267,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Next
+          Наступна
         </Button>
       </div>
     </div>

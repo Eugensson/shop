@@ -36,7 +36,7 @@ export const OverviewData = () => {
           <Card className="p-4 border-2 border-border">
             <CardHeader className="p-2 pt-0">
               <CardTitle className="text-base font-medium text-muted-foreground flex justify-between items-center gap-x-2">
-                Sales
+                Продажі
                 <BadgeDollarSign size={22} />
               </CardTitle>
             </CardHeader>
@@ -46,7 +46,7 @@ export const OverviewData = () => {
               </p>
               <Button variant="link" asChild className="pb-0">
                 <Link href="/orders" className="w-full text-sm text-center">
-                  View sales
+                  Переглянути
                 </Link>
               </Button>
             </CardContent>
@@ -56,7 +56,7 @@ export const OverviewData = () => {
           <Card className="p-4 border-2 border-border">
             <CardHeader className="p-2 pt-0">
               <CardTitle className="text-base font-medium text-muted-foreground flex justify-between items-center gap-x-2">
-                Orders
+                Замовлення
                 <Calendar size={22} />
               </CardTitle>
             </CardHeader>
@@ -66,7 +66,7 @@ export const OverviewData = () => {
               </p>
               <Button variant="link" asChild className="pb-0">
                 <Link href="/orders" className="w-full text-sm text-center">
-                  View orders
+                  Переглянути
                 </Link>
               </Button>
             </CardContent>
@@ -76,7 +76,7 @@ export const OverviewData = () => {
           <Card className="p-4 border-2 border-border">
             <CardHeader className="p-2 pt-0">
               <CardTitle className="text-base font-medium text-muted-foreground flex justify-between items-center gap-x-2">
-                Products
+                Товари
                 <Inbox size={22} />
               </CardTitle>
             </CardHeader>
@@ -86,7 +86,7 @@ export const OverviewData = () => {
               </p>
               <Button variant="link" asChild className="pb-0">
                 <Link href="/products" className="w-full text-sm text-center">
-                  View products
+                  Переглянути
                 </Link>
               </Button>
             </CardContent>
@@ -96,7 +96,7 @@ export const OverviewData = () => {
           <Card className="p-4 border-2 border-border">
             <CardHeader className="p-2 pt-0">
               <CardTitle className="text-base font-medium text-muted-foreground flex justify-between items-center gap-x-2">
-                Users
+                Користувачі
                 <Users size={22} />
               </CardTitle>
             </CardHeader>
@@ -106,7 +106,7 @@ export const OverviewData = () => {
               </p>
               <Button variant="link" asChild className="pb-0">
                 <Link href="/users" className="w-full text-sm text-center">
-                  View users
+                  Переглянути
                 </Link>
               </Button>
             </CardContent>

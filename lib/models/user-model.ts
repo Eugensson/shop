@@ -20,11 +20,12 @@ const UserSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      match: [/.+\@.+\..+/i, "Please enter a valid email address"],
+      match: [/.+\@.+\..+/i, "Введіть дійсну електронну адресу"],
     },
     password: {
       type: String,
       required: true,
+      minlength: [6, "Пароль має бути не менше 6 символів"],
     },
     isAdmin: {
       type: Boolean,
@@ -48,7 +49,7 @@ UserSchema.pre("save", async function (next) {
       if (err instanceof Error) {
         next(err as CallbackError);
       } else {
-        next(new Error("Unknown error during password hashing"));
+        next(new Error("Невідома помилка під час хешування пароля"));
       }
     }
   }

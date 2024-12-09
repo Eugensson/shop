@@ -23,8 +23,8 @@ export const AppSidebar = () => {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="py-5 text-base font-semibold">
-            <LayoutDashboard />
-            Admin Pannel
+            <LayoutDashboard className="mr-2" />
+            Панель Адміністратора
           </SidebarGroupLabel>
           <Separator className="my-2" />
           <SidebarGroupContent>

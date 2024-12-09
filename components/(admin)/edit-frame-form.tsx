@@ -72,7 +72,7 @@ export const EditFrameForm = ({ frameId, categories }: EditFrameFormProps) => {
         return;
       }
 
-      toast({ title: "Frame updated successfully" });
+      toast({ title: "Кадр оновлено" });
       router.push("/portfolio");
     }
   );
@@ -115,7 +115,7 @@ export const EditFrameForm = ({ frameId, categories }: EditFrameFormProps) => {
       const data = await res.json();
       setValue("image", data.secure_url);
       setImagePreview(data.secure_url);
-      toast({ title: "Image uploaded successfully" });
+      toast({ title: "Зображення завантажено" });
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       toast({ title: err.message, variant: "destructive" });
@@ -150,14 +150,14 @@ export const EditFrameForm = ({ frameId, categories }: EditFrameFormProps) => {
       <CardHeader className="px-0 py-2">
         <CardTitle className="mb-4 flex justify-center items-center gap-4">
           <FilePenLine />
-          Edit frame
+          Редагувати дані
         </CardTitle>
       </CardHeader>
       <CardContent className="px-0 py-2">
         <form onSubmit={handleSubmit(formSubmit)} className="space-y-4">
           <div className="flex flex-col gap-2">
             <Label htmlFor="category">
-              <p>Category</p>
+              <p>Категорія</p>
             </Label>
             <Select
               disabled={isUpdating}
@@ -167,7 +167,7 @@ export const EditFrameForm = ({ frameId, categories }: EditFrameFormProps) => {
               onValueChange={(value) => setSelectedCategory(value)}
             >
               <SelectTrigger>
-                <SelectValue placeholder="Select category" />
+                <SelectValue placeholder="Обрати категорію" />
               </SelectTrigger>
               <SelectContent>
                 {categories?.map((category) => (
@@ -178,8 +178,8 @@ export const EditFrameForm = ({ frameId, categories }: EditFrameFormProps) => {
               </SelectContent>
             </Select>
           </div>
-          <FormInput name="Title" id="title" />
-          <FormInput name="Description" id="description" />
+          <FormInput name="Заголовок" id="title" />
+          <FormInput name="Опис" id="description" />
           <div className="flex items-center gap-10">
             {imagePreview && (
               <Image
@@ -207,11 +207,11 @@ export const EditFrameForm = ({ frameId, categories }: EditFrameFormProps) => {
               className="flex-1"
             >
               <Ban />
-              Cancel
+              Відхилити
             </Button>
             <Button type="submit" disabled={isUpdating} className="flex-1">
               {isUpdating ? <Loader className="animate-spin" /> : <RefreshCw />}
-              Update
+              Оновити
             </Button>
           </div>
         </form>

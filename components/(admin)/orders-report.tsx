@@ -40,7 +40,7 @@ export const OrdersReport = ({ data }: OrdersReportProps) => {
     datasets: [
       {
         fill: true,
-        label: "Orders",
+        label: "Замовлення",
         data: data.map((x: { totalOrders: number }) => x.totalOrders),
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",
@@ -53,7 +53,7 @@ export const OrdersReport = ({ data }: OrdersReportProps) => {
       <CardHeader>
         <CardTitle className="text-primary flex items-center gap-x-2">
           <ChartNoAxesCombined size={24} />
-          Orders Report
+          Звіт по замовленнях
         </CardTitle>
       </CardHeader>
       <CardContent>

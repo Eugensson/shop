@@ -4,7 +4,7 @@ import { columns } from "@/app/(admin)/blog/columns";
 import { DataTable } from "@/app/(admin)/blog/data-table";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Новини",
 };
 
 const Blog = () => {

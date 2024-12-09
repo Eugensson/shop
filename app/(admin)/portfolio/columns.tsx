@@ -42,7 +42,7 @@ const FrameActions = ({ frameId }: { frameId: string }) => {
         const data = await res.json();
         if (res.ok) {
           toast({
-            title: "Frame deleted successfully",
+            title: "Кадр видалено",
           });
           router.refresh();
         } else {
@@ -53,7 +53,7 @@ const FrameActions = ({ frameId }: { frameId: string }) => {
         }
       } catch {
         toast({
-          title: "Something went wrong",
+          title: "Сталася помилка. Спробуйте ще раз.",
           variant: "destructive",
         });
       }
@@ -64,12 +64,12 @@ const FrameActions = ({ frameId }: { frameId: string }) => {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="h-8 w-8 p-0">
-          <span className="sr-only">Open menu</span>
+          <span className="sr-only">Відкрити меню</span>
           <MoreVertical className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuLabel>Actions</DropdownMenuLabel>
+        <DropdownMenuLabel>Дії</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>
           <Button variant="link" size="sm" asChild>
@@ -78,7 +78,7 @@ const FrameActions = ({ frameId }: { frameId: string }) => {
               className="flex items-center gap-2"
             >
               <PencilIcon className="size-4 text-emerald-500" />
-              Edit frame
+              Редагувати
             </Link>
           </Button>
         </DropdownMenuItem>
@@ -91,7 +91,7 @@ const FrameActions = ({ frameId }: { frameId: string }) => {
             onClick={() => deleteFrame({ frameId })}
           >
             <TrashIcon className="size-4 text-red-500" />
-            Delete frame
+            Видалити
           </Button>
         </DropdownMenuItem>
       </DropdownMenuContent>
@@ -102,7 +102,7 @@ const FrameActions = ({ frameId }: { frameId: string }) => {
 export const columns: ColumnDef<FrameRow>[] = [
   {
     accessorKey: "image",
-    header: () => <p className="sr-only">Image</p>,
+    header: () => <p className="sr-only">Зображення</p>,
     cell: ({ row }) => {
       const imageUrl =
         (row.getValue("image") as string) ?? "/images/placeholder.png";
@@ -125,7 +125,7 @@ export const columns: ColumnDef<FrameRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Title
+          Заголовок
           <ArrowUpAZ className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -144,7 +144,7 @@ export const columns: ColumnDef<FrameRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Description
+          Опис
           <ArrowUpAZ className="ml-2 h-4 w-4" />
         </Button>
       );
@@ -162,7 +162,7 @@ export const columns: ColumnDef<FrameRow>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Category
+          Категорія
           <ArrowUpAZ className="ml-2 h-4 w-4" />
         </Button>
       );

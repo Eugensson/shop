@@ -40,7 +40,7 @@ export const SalesReport = ({ data }: SalesReportProps) => {
     datasets: [
       {
         fill: true,
-        label: "Sales",
+        label: "Продажі",
         data: data.map((x: { totalSales: number }) => x.totalSales),
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",
@@ -53,7 +53,7 @@ export const SalesReport = ({ data }: SalesReportProps) => {
       <CardHeader>
         <CardTitle className="text-primary flex items-center gap-x-2">
           <ChartNoAxesCombined size={24} />
-          Sales Report
+          Звіт з продаж
         </CardTitle>
       </CardHeader>
       <CardContent>

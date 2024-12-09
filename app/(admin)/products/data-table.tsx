@@ -75,12 +75,12 @@ export function DataTable<TData, TValue>({
       }
 
       toast({
-        title: "Product created successfully",
+        title: "Товар створено",
       });
 
       if (!data.product || !data.product._id) {
         toast({
-          title: "Failed to create product",
+          title: "Не вдалося створити товар",
           variant: "destructive",
         });
         return;
@@ -101,7 +101,7 @@ export function DataTable<TData, TValue>({
         countInStock: product.countInStock,
         category: product.category,
         rating: product.rating,
-        action: "Edit product",
+        action: "Редагувати товар",
       })) || []
     );
   }, [rawData]);
@@ -137,11 +137,11 @@ export function DataTable<TData, TValue>({
               ) : (
                 <CirclePlus />
               )}
-              Create product
+              Створити
             </Button>
             <div className="relative w-full max-w-md">
               <Input
-                placeholder="Search product by sku..."
+                placeholder="Пошук за артикулем..."
                 value={
                   (table.getColumn("sku")?.getFilterValue() as string) ?? ""
                 }
@@ -157,7 +157,7 @@ export function DataTable<TData, TValue>({
             </div>
             <div className="relative w-full max-w-md">
               <Input
-                placeholder="Search product by name..."
+                placeholder="Пошук за назвою..."
                 value={
                   (table.getColumn("name")?.getFilterValue() as string) ?? ""
                 }
@@ -239,7 +239,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Результати відсутні.
                 </TableCell>
               </TableRow>
             )}
@@ -258,7 +258,7 @@ export function DataTable<TData, TValue>({
           }}
           disabled={!table.getCanPreviousPage()}
         >
-          Previous
+          Попередня
         </Button>
         <Button
           variant="outline"
@@ -266,7 +266,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Next
+          Наступна
         </Button>
       </div>
     </div>

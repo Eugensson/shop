@@ -9,7 +9,7 @@ export const generateMetadata = async ({
 }) => {
   const { id } = await params;
   return {
-    title: `Edit frame ${id}`,
+    title: `Редагувати кадр ${id}`,
   };
 };
 

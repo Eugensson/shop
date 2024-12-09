@@ -57,51 +57,51 @@ export const UserButton = () => {
               <Link href="/overview">
                 <DropdownMenuItem>
                   <LayoutDashboard className="mr-2 size-4" />
-                  Dashboard
+                  Адмінпанель
                 </DropdownMenuItem>
               </Link>
             )}
             <Link href="/profile">
               <DropdownMenuItem>
                 <UserIcon className="mr-2 size-4" />
-                Profile
+                Профіль
               </DropdownMenuItem>
             </Link>
             <Link href="/wishlist">
               <DropdownMenuItem>
                 <Heart className="mr-2 size-4" />
-                Wishlist
+                Обрані товари
               </DropdownMenuItem>
             </Link>
             <Link href="/order-history">
               <DropdownMenuItem>
                 <FolderClock className="mr-2 size-4" />
-                Order history
+                Історія замовлень
               </DropdownMenuItem>
             </Link>
             <DropdownMenuSeparator />
             <DropdownMenuSub>
               <DropdownMenuSubTrigger>
                 <Monitor className="mr-2 size-4" />
-                Theme
+                Тема
               </DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
                   <DropdownMenuItem onClick={() => setTheme("system")}>
                     <Monitor className="mr-2 size-4" />
-                    System default
+                    Системна
                     {theme === "system" && (
                       <CheckIcon className="ms-2 size-4" />
                     )}
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => setTheme("light")}>
                     <SunIcon className="mr-2 size-4" />
-                    Light
+                    Світла
                     {theme === "light" && <CheckIcon className="ms-2 size-4" />}
                   </DropdownMenuItem>
                   <DropdownMenuItem onClick={() => setTheme("dark")}>
                     <MoonIcon className="mr-2 size-4" />
-                    Dark
+                    Темна
                     {theme === "dark" && <CheckIcon className="ms-2 size-4" />}
                   </DropdownMenuItem>
                 </DropdownMenuSubContent>
@@ -113,7 +113,7 @@ export const UserButton = () => {
               onClick={signOutHandler}
             >
               <LogOut className="w-4 h-4 mr-2" />
-              Logout
+              Вийти
             </DropdownMenuItem>
           </>
         ) : (
@@ -151,7 +151,7 @@ export const UserButton = () => {
               onClick={() => signIn()}
             >
               <LogIn className="w-4 h-4 mr-2" />
-              Signin
+              Увійти
             </DropdownMenuItem>
           </>
         )}

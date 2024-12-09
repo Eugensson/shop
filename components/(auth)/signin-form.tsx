@@ -15,12 +15,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { SocialBtn } from "@/components/(auth)/social-btn";
 
 import { DEFAULT_LOGIN_REDIRECT } from "@/routes";
-import { SocialBtn } from "./social-btn";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Label } from "../ui/label";
 
 type Inputs = {
   email: string;
@@ -65,13 +65,15 @@ export const SignInForm = () => {
       <CardHeader className="space-y-2">
         <CardTitle className="flex items-center justify-center gap-x-2 text-2xl font-semibold uppercase">
           <LockKeyhole size={24} />
-          Auth
+          Логування
         </CardTitle>
-        <CardDescription className="text-center">Welcome back!</CardDescription>
+        <CardDescription className="text-center">
+          З поверненням!
+        </CardDescription>
         {searchParams.get("error") && (
           <div className="alert text-error">
             {searchParams.get("error") === "CredentialsSignin"
-              ? "Invalid email or password"
+              ? "Помилкові дані електронної пошти або пароля"
               : searchParams.get("error")}
           </div>
         )}
@@ -91,7 +93,7 @@ export const SignInForm = () => {
               {errors.email?.message ? (
                 <p className="text-destructive">{errors.email.message}</p>
               ) : (
-                "Email"
+                "Електронна пошта"
               )}
             </Label>
             <div className="relative">
@@ -99,13 +101,13 @@ export const SignInForm = () => {
                 id="email"
                 type="text"
                 autoComplete="off"
-                placeholder="joe.doe@example.com"
+                placeholder="example@mail.com"
                 className="pl-10"
                 {...register("email", {
-                  required: "Email is required",
+                  required: "Електронна пошта - обов'язкове поле",
                   pattern: {
                     value: /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/,
-                    message: "Email is invalid",
+                    message: "Не вірний формат електронної пошти",
                   },
                 })}
               />
@@ -120,7 +122,7 @@ export const SignInForm = () => {
               {errors.password?.message ? (
                 <p className="text-destructive">{errors.password.message}</p>
               ) : (
-                "Password"
+                "Пароль"
               )}
             </Label>
             <div className="relative">
@@ -131,7 +133,7 @@ export const SignInForm = () => {
                 type={isVisiblePassword ? "text" : "password"}
                 className="px-10"
                 {...register("password", {
-                  required: "Password is required",
+                  required: "Пароль - обов'язкове поле",
                 })}
               />
               <Key
@@ -164,7 +166,7 @@ export const SignInForm = () => {
             disabled={isSubmitting}
             className="w-full"
           >
-            {isSubmitting && <Loader className="animate-spin" />}Sign in
+            {isSubmitting && <Loader className="animate-spin" />}Вхід
           </Button>
         </form>
       </CardContent>
@@ -172,7 +174,7 @@ export const SignInForm = () => {
         <SocialBtn />
         <Button variant="link" asChild>
           <Link className="link" href={`/sign-up?callbackUrl=${callbackUrl}`}>
-            Don&apos;t have an account?
+            Не маєте облікового запису?
           </Link>
         </Button>
       </CardFooter>

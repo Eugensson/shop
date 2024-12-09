@@ -53,7 +53,7 @@ export const EditPostForm = ({ postId }: { postId: string }) => {
         return;
       }
 
-      toast({ title: "Post updated successfully" });
+      toast({ title: "Публікацію оновлено" });
       router.push("/blog");
     }
   );
@@ -85,7 +85,7 @@ export const EditPostForm = ({ postId }: { postId: string }) => {
 
       if (files.length + newImages.length > 20) {
         toast({
-          title: "You can upload a maximum of 20 images",
+          title: "Ви можете завантажити максимум 20 зображень",
           variant: "destructive",
         });
         return;
@@ -111,7 +111,7 @@ export const EditPostForm = ({ postId }: { postId: string }) => {
       }
 
       setValue("images", newImages as ["string"]);
-      toast({ title: "Images uploaded successfully" });
+      toast({ title: "Зображення успішно завантажено" });
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       toast({ title: err.message, variant: "destructive" });
@@ -159,7 +159,7 @@ export const EditPostForm = ({ postId }: { postId: string }) => {
           type="text"
           id={id}
           {...register(id, {
-            required: required && `* ${name} is required`,
+            required: required && `* ${name} обов'язкове поле`,
             pattern,
           })}
           placeholder={placeholder}
@@ -178,10 +178,10 @@ export const EditPostForm = ({ postId }: { postId: string }) => {
       <CardHeader className="px-0 py-2">
         <CardTitle className="mb-4 flex justify-center items-center gap-4">
           <FilePenLine />
-          Edit post
+          Редагувати публікацію
         </CardTitle>
         <CardDescription className="flex items-center justify-between gap-8">
-          <span> PostID:</span>
+          <span>ID публікації:</span>
           <span>{formatId(postId)}</span>
         </CardDescription>
       </CardHeader>
@@ -228,11 +228,11 @@ export const EditPostForm = ({ postId }: { postId: string }) => {
               className="flex-1"
             >
               <Ban />
-              Cancel
+              Відхилити
             </Button>
             <Button type="submit" disabled={isUpdating} className="flex-1">
               {isUpdating ? <Loader className="animate-spin" /> : <RefreshCw />}
-              Update
+              Оновити
             </Button>
           </div>
         </form>

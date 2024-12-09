@@ -3,7 +3,7 @@ import { Metadata } from "next";
 import { OverviewData } from "@/components/(admin)/overview";
 
 export const metadata: Metadata = {
-  title: "Overview",
+  title: "Інфографіка",
 };
 
 const Overview = () => {

@@ -39,7 +39,7 @@ export const UsersReport = ({ data }: UsersReportProps) => {
     labels: data.map((x: { _id: string }) => x._id), // 2022/01 2022/03
     datasets: [
       {
-        label: "Users",
+        label: "Користувачі",
         borderColor: "rgb(53, 162, 235)",
         backgroundColor: "rgba(53, 162, 235, 0.5)",
         data: data.map((x: { totalUsers: number }) => x.totalUsers),
@@ -52,7 +52,7 @@ export const UsersReport = ({ data }: UsersReportProps) => {
       <CardHeader>
         <CardTitle className="text-primary flex items-center gap-x-2">
           <ChartNoAxesCombined size={24} />
-          Users Report
+          Звіт по користувачах
         </CardTitle>
       </CardHeader>
       <CardContent className="h-full flex items-center justify-center">

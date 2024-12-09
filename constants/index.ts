@@ -28,14 +28,14 @@ export const PAGE_SIZE_POST = 4;
 export const RATINGS = [5, 4, 3, 2, 1];
 
 export const ADMIN_LINKS = [
-  { title: "Back to Website", url: "/", icon: Undo2 },
-  { title: "Overview", url: "/overview", icon: ChartNoAxesCombined },
-  { title: "Products", url: "/products", icon: Inbox },
-  { title: "Orders", url: "/orders", icon: Calendar },
-  { title: "Users", url: "/users", icon: Users },
-  { title: "Blog", url: "/blog", icon: Rss },
-  { title: "Gallery", url: "/portfolio", icon: ImagesIcon },
-  { title: "Settings", url: "/settings", icon: Settings },
+  { title: "Повернутися на сайт", url: "/", icon: Undo2 },
+  { title: "Інфографіка", url: "/overview", icon: ChartNoAxesCombined },
+  { title: "Товари", url: "/products", icon: Inbox },
+  { title: "Замовлення", url: "/orders", icon: Calendar },
+  { title: "Користувачі", url: "/users", icon: Users },
+  { title: "Новини", url: "/blog", icon: Rss },
+  { title: "Галерея", url: "/portfolio", icon: ImagesIcon },
+  { title: "Налаштування", url: "/settings", icon: Settings },
 ];
 
 export const NAV_LINKS = [

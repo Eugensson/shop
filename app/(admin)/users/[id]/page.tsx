@@ -7,7 +7,7 @@ export const generateMetadata = async ({
 }) => {
   const id = (await params).id;
   return {
-    title: `Edit product ${id}`,
+    title: `Редагевання даних користувача ${id}`,
   };
 };
 

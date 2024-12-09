@@ -75,12 +75,12 @@ export function DataTable<TData, TValue>({
       }
 
       toast({
-        title: "Post created successfully",
+        title: "Новину створено",
       });
 
       if (!data.post || !data.post._id) {
         toast({
-          title: "Failed to create post",
+          title: "Сталася помилка. Спробуйте ще раз.",
           variant: "destructive",
         });
         return;
@@ -99,7 +99,7 @@ export function DataTable<TData, TValue>({
         image: post.images[0],
         createPost: new Date(post.createdAt).toLocaleString(),
         updatePost: new Date(post.updatedAt).toLocaleString(),
-        action: "Edit post",
+        action: "Редагувати новину",
       })) || []
     );
   }, [rawData]);
@@ -135,16 +135,36 @@ export function DataTable<TData, TValue>({
               ) : (
                 <CirclePlus />
               )}
-              Create post
+              Створити публікацію
             </Button>
             <div className="relative w-full max-w-md">
               <Input
-                placeholder="Search post by title..."
+                placeholder="Пошук за заголовком..."
                 value={
                   (table.getColumn("title")?.getFilterValue() as string) ?? ""
                 }
                 onChange={(event) =>
                   table.getColumn("title")?.setFilterValue(event.target.value)
+                }
+                className="pl-10"
+              />
+              <Search
+                size={20}
+                className="absolute left-2 top-1/2 -translate-y-1/2 text-muted-foreground"
+              />
+            </div>
+            <div className="relative w-full max-w-md">
+              <Input
+                placeholder="Пошук за описом..."
+                value={
+                  (table
+                    .getColumn("description")
+                    ?.getFilterValue() as string) ?? ""
+                }
+                onChange={(event) =>
+                  table
+                    .getColumn("description")
+                    ?.setFilterValue(event.target.value)
                 }
                 className="pl-10"
               />
@@ -221,7 +241,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  Результати відсутні.
                 </TableCell>
               </TableRow>
             )}
@@ -240,7 +260,7 @@ export function DataTable<TData, TValue>({
           }}
           disabled={!table.getCanPreviousPage()}
         >
-          Previous
+          Попередня
         </Button>
         <Button
           variant="outline"
@@ -248,7 +268,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Next
+          Наступна
         </Button>
       </div>
     </div>

@@ -79,7 +79,7 @@ export const EditProductForm = ({
         return;
       }
 
-      toast({ title: "Product updated successfully" });
+      toast({ title: "Дані оновлено" });
       router.push("/products");
     }
   );
@@ -159,7 +159,7 @@ export const EditProductForm = ({
       }
 
       setValue("images", newImages as ["string"]);
-      toast({ title: "Images uploaded successfully" });
+      toast({ title: "Зображення завантажено" });
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (err: any) {
       toast({ title: err.message, variant: "destructive" });
@@ -208,7 +208,7 @@ export const EditProductForm = ({
           type="text"
           id={id}
           {...register(id, {
-            required: required && `* ${name} is required`,
+            required: required && `* ${name} обов'язкове поле`,
             pattern,
           })}
           disabled={disabled}
@@ -228,10 +228,10 @@ export const EditProductForm = ({
       <CardHeader className="px-0 py-2">
         <CardTitle className="mb-4 flex justify-center items-center gap-4">
           <FilePenLine />
-          Edit product
+          Редагування даних товару
         </CardTitle>
         <CardDescription className="flex items-center justify-between gap-8">
-          <span> ProductID:</span>
+          <span>ID товару:</span>
           <span>{formatId(productId)}</span>
         </CardDescription>
       </CardHeader>
@@ -241,21 +241,25 @@ export const EditProductForm = ({
           className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-8"
         >
           <div className="space-y-4">
-            <FormInput name="Name" id="name" required />
-            <FormInput name="Slug" id="slug" required disabled />
-            <FormInput name="Price" id="price" required />
-            <FormInput name="Count In Stock" id="countInStock" required />
+            <FormInput name="Найменування" id="name" required />
+            <FormInput name="Слаг" id="slug" required disabled />
+            <FormInput name="Ціна" id="price" required />
+            <FormInput
+              name="Кількість в наявності"
+              id="countInStock"
+              required
+            />
             <div className="flex flex-col gap-2">
               <FormInput
-                name="Category"
+                name="Категорія"
                 id="category"
-                placeholder="Add new category"
+                placeholder="Додати нову категорію"
                 required
               />
               <div className="relative flex justify-center">
                 <Separator className="my-2" />
                 <span className="absolute top-1/2 -translate-y-1/2 px-4 bg-background text-muted-foreground">
-                  or
+                  або
                 </span>
               </div>
               <Select
@@ -266,7 +270,7 @@ export const EditProductForm = ({
                 onValueChange={(value) => setSelectedCategory(value)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select category" />
+                  <SelectValue placeholder="Обрати зі списку" />
                 </SelectTrigger>
                 <SelectContent>
                   {categories?.map((category) => (
@@ -283,16 +287,16 @@ export const EditProductForm = ({
             <FormInput name="Sku" id="sku" required />
             <div className="flex flex-col gap-2">
               <FormInput
-                name="Brand"
+                name="Виробник"
                 id="brand"
-                placeholder="Add new brand"
+                placeholder="Додати нового виробника"
                 required
               />
 
               <div className="relative flex justify-center">
                 <Separator className="my-2" />
                 <span className="absolute top-1/2 -translate-y-1/2 px-4 bg-background text-muted-foreground">
-                  or
+                  або
                 </span>
               </div>
               <Select
@@ -303,7 +307,7 @@ export const EditProductForm = ({
                 onValueChange={(value) => setSelectedBrand(value)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder="Select brand" />
+                  <SelectValue placeholder="Обрати зі списку" />
                 </SelectTrigger>
                 <SelectContent>
                   {brands?.map((brand) => (
@@ -314,9 +318,8 @@ export const EditProductForm = ({
                 </SelectContent>
               </Select>
             </div>
-            {/* <FormInput name="Images" id="images" /> */}
             <div className="space-y-2">
-              <Label htmlFor="images">Selected Images</Label>
+              <Label htmlFor="images">Вибрані зображення</Label>
               <div className="flex gap-2">
                 {getValues("images")?.map((imageUrl: string, index: number) => (
                   <div key={index} className="relative">
@@ -353,7 +356,7 @@ export const EditProductForm = ({
               onChange={uploadHandler}
             />
 
-            <FormInput name="Description" id="description" required />
+            <FormInput name="Опис товару" id="description" required />
             <div className="flex items-center gap-4">
               <Button
                 variant="outline"
@@ -362,7 +365,7 @@ export const EditProductForm = ({
                 className="flex-1"
               >
                 <Ban />
-                Cancel
+                Відхилити
               </Button>
               <Button type="submit" disabled={isUpdating} className="flex-1">
                 {isUpdating ? (
@@ -370,7 +373,7 @@ export const EditProductForm = ({
                 ) : (
                   <RefreshCw />
                 )}
-                Update
+                Оновити
               </Button>
             </div>
           </div>

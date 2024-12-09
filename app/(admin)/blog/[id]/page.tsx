@@ -7,7 +7,7 @@ export const generateMetadata = async ({
 }) => {
   const { id } = await params;
   return {
-    title: `Edit post ${id}`,
+    title: `Редагувати публікацію ${id}`,
   };
 };
 
