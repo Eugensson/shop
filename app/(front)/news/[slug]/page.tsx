@@ -49,7 +49,7 @@ const NewsDetails = async ({
     const serilizePost = convertDocToObj(post);
 
     return (
-      <section className="container max-w-4xl py-10">
+      <section className="container max-w-4xl py-20 min-h-screen">
         <Button variant="link" asChild>
           <Link href="/news">Повернутися до розділу новин</Link>
         </Button>

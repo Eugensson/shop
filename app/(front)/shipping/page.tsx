@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const Shipping = () => {
   return (
-    <section className="container min-h-screen flex items-center justify-center">
+    <section className="container min-h-screen py-20 flex items-center justify-center">
       <ShippingAddressForm />
     </section>
   );

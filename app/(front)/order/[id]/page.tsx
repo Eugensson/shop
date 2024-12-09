@@ -19,7 +19,7 @@ const OrderDetails = async ({
 }) => {
   const id = (await params).id;
   return (
-    <section className="container py-4">
+    <section className="container py-20 min-h-screen">
       <h1 className="flex items-stretch gap-2 font-semibold text-2xl text-muted-foreground">
         <NotepadText size={28} />
         Order #{id}

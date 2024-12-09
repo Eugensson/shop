@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const Gallery = async () => {
   const categories = await getUniqueCategories();
   return (
-    <section className="container py-10 min-h-screen">
+    <section className="container py-20 min-h-screen">
       <ul className="grid grid-cols-1 xl:grid-cols-2 gap-5">
         {categories.map((category) => (
           <li key={category}>

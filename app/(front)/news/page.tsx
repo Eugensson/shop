@@ -24,7 +24,7 @@ const News = async ({
   const filterParams = { q, page };
 
   return (
-    <section className="container min-h-[80vh] py-5 h-full">
+    <section className="container min-h-screen py-20">
       <NewsList posts={posts.map(convertDocToObj)} countPosts={countPosts} />
       <PaginationBar filterParams={filterParams} totalPages={pages} />
     </section>

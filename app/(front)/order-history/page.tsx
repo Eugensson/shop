@@ -8,10 +8,10 @@ export const metadata: Metadata = {
 
 const OrderHistory = () => {
   return (
-    <section className="container">
+    <section className="container min-h-[80vh]">
       <h1 className="flex items-center gap-4 text-2xl py-10">
         <CalendarClock />
-        Order History
+        Історія замовлень
       </h1>
       <MyOrderList />
     </section>

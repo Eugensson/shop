@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const Services = () => {
   return (
-    <section className="container py-2 grid space-y-5">
+    <section className="container min-h-screen py-20 grid space-y-5">
       <Card className="mx-auto max-w-7xl grid grid-cols-1 md:grid-cols-[1fr_500px] gap-10 overflow-hidden">
         <CardHeader>
           <CardTitle className="text-2xl font-semibold text-center my-5">

@@ -53,7 +53,7 @@ const ProductDetails = async ({
     const item = convertProdToItem(product);
 
     return (
-      <section className="container py-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
+      <section className="container py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
         <ProductImages images={product.images} className="lg:col-span-2" />
         <ul className="lg:col-span-2 flex flex-col gap-3 p-2 md:p-4 lg:p-6 relative">
           <li className="absolute top-4 right-10">

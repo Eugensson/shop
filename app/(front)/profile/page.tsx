@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 const Profile = () => {
   return (
-    <div className="container py-10 flex justify-center items-center">
+    <div className="container py-20 min-h-[80vh] flex justify-center items-center">
       <EditProfileForm />
     </div>
   );

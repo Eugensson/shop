@@ -34,7 +34,7 @@ const Category = async ({
   const images = await getImagesByCategory(category);
 
   return (
-    <section className="container py-10 h-[80vh]">
+    <section className="container py-20 min-h-screen">
       <GalleryImages images={images} />
     </section>
   );
